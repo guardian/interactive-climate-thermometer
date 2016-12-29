@@ -122,7 +122,8 @@ gulp.task('build:css', () => {
 
 gulp.task('build:js.main', buildJS('main.js'));
 gulp.task('build:js.app', buildJS('app.js'));
-gulp.task('build:js', ['build:js.main', 'build:js.app']);
+gulp.task('build:js.app_mobile', buildJS('app_mobile.js'));
+gulp.task('build:js', ['build:js.main', 'build:js.app', 'build:js.app_mobile']);
 
 gulp.task('build:html', cb => {
     try {

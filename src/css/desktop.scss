@@ -1,0 +1,48 @@
+@media (min-width: 860px) {
+
+
+	.gv-slides-container {
+		background: #efefec;
+		position: fixed;
+		z-index: -1;
+
+	}
+
+	.gv-slide {
+		
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		.gv-slide-content {
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+		}
+	}
+
+	.slide-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-position: center center;
+		border-radius: 2000px;
+		background-size: initial;
+	}
+	  
+
+	#slide-1 {
+		background-image: url('<%= path %>/assets/polar-bear.gif');
+	}
+
+	#slide-2 {
+		background-image: url('<%= path %>/assets/crab.gif');
+	}
+
+	#slide-3 {
+		background-image: url('<%= path %>/assets/shoes.gif');
+	}
+
+
+}

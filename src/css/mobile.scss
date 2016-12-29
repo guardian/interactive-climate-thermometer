@@ -1,0 +1,34 @@
+@media (max-width: 860px) {
+
+	.element-atom,
+	.interactive-atom {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
+	.l-header {
+		z-index: 2;
+	}
+
+
+	.gv-slides-container {
+		background: #efefec;
+		
+
+	}
+
+	.gv-slide {
+		width: 100%;
+		height: 100%;
+
+		.gv-slide-content {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+
+}

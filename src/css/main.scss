@@ -1,35 +1,18 @@
 @import "mq";
 @import "fonts";
+@import "swiper";
+
+@import "mobile";
+@import "desktop";
 
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
-    height: calc(100% - 70px);
+    z-index: -1;
 }
 
 .gv-wrapper {
 	height: 100%;
-}
-
-.gv-slides-container {
-	background: #efefec;
-	position: fixed;
-	z-index: -1;
-
-}
-
-.gv-slide {
-	
-	position: absolute;
-	width: 100%;
-	height: 100%;
-
-	.gv-slide-content {
-		position: absolute;
-		top: 0;
-		left: 0;
-		border-radius: 50%;
-	}
 }
 
 $darkred: #800c0c;
@@ -49,6 +32,7 @@ $colour: #fff;
 $pctRange: -10%;
 $degRange: 2deg;
 
+
 @for $i from $start through $end {
 	$p: $i / $end;
 
@@ -59,7 +43,7 @@ $degRange: 2deg;
 	}
 
 
-	.gv-slide:nth-of-type(#{$i +1}) .#{$class-slug}{
+	.gv-slide:nth-of-type(#{$i +2}) .#{$class-slug}{
 
 		@if $r == 0 {
 			$colour: nth($colours, $currentColour);
@@ -79,24 +63,12 @@ $degRange: 2deg;
 	}
 }
 
-.slide-image {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-position: center center;
-	border-radius: 2000px;
-	background-size: initial;
-}
-  
-
-#slide-1 {
-	background-image: url('<%= path %>/assets/polar-bear.gif');
+//first slide
+.gv-slide:first-of-type .gv-slide-content{
+	background: #4bc6df;
 }
 
-#slide-2 {
-	background-image: url('<%= path %>/assets/crab.gif');
-}
-
-#slide-3 {
-	background-image: url('<%= path %>/assets/shoes.gif');
+//last slide
+.gv-slide:last-of-type .gv-slide-content{
+	background: #333;
 }
