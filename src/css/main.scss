@@ -42,24 +42,17 @@ $degRange: 2deg;
 		$currentColour: $currentColour + 1;
 	}
 
+	@if $r == 0 {
+		$colour: nth($colours, $currentColour);
+	} @else {
+		$pct: ($r +1) /$break * $pctRange;
+		$deg: ($r +1) /$break * $degRange;
+		$colour: adjust-color( $colour, $hue: $deg, $saturation: $deg);
+	}
+
 
 	.gv-slide:nth-of-type(#{$i +2}) .#{$class-slug}{
-
-		@if $r == 0 {
-			$colour: nth($colours, $currentColour);
-			background: $colour;
-		} @else {
-
-			$pct: ($r +1) /$break * $pctRange;
-			$deg: ($r +1) /$break * $degRange;
-			$colour: adjust-color( $colour, $hue: $deg, $saturation: $deg);
-			background: $colour;
-		}
-
-		/***********
-		******  #{$colour}
-		***********/
-	    
+		background: $colour;	    
 	}
 }
 

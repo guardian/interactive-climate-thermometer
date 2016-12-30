@@ -1,7 +1,7 @@
 @media (max-width: 860px) {
-
-	.element-atom,
-	.interactive-atom {
+	
+	
+	.gv-wrapper {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -13,11 +13,24 @@
 		z-index: 2;
 	}
 
+	.android-app-spacer {
+		width: 100%;
+		display: block;
+	}
+
 
 	.gv-slides-container {
 		background: #efefec;
-		
+	}
 
+	.gv-mobile {
+		 -moz-transition: all 1s ease-in;
+
+	    -webkit-transition: background-color 1000ms linear;
+        -moz-transition: background-color 1000ms linear;
+        -o-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
 	}
 
 	.gv-slide {
