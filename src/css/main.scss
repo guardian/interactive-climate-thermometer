@@ -58,7 +58,8 @@ $degRange: 2deg;
 
 //first slide
 .gv-slide:first-of-type .gv-slide-content{
-	background: #4bc6df;
+	background: red; /* For browsers that do not support gradients */
+    
 }
 
 //last slide
