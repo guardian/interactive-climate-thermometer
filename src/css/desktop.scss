@@ -1,3 +1,11 @@
+$color1: #ffcf3a;
+$color2: #ff9c00;
+$color3: #e87100;
+$color4: #c25300;
+$color5: #cc2b12;
+$color6: #b51800;
+
+
 @media (min-width: 860px) {
 
 
@@ -26,27 +34,27 @@
 		}
 	}
 
-	.slide-image {
+	.slide-image, .slide-mask {
 		position: absolute;
 		width: 100%;
 		height: 100%;
+		border-radius: 2000px;	
+	}
+
+	.slide-image{
 		background-position: center center;
-		border-radius: 2000px;
-		
-    	
 	}
 	  
 
 	#slide-1 {
-		background-image: url('<%= path %>/assets/polar-bear.gif');
-		background: linear-gradient(aqua 0%, aqua 100%), url('<%= path %>/assets/polar-bear.gif');
+		background: linear-gradient($color1 0%, $color1 100%), url('<%= path %>/assets/polar-bear.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-2 {
-		background: linear-gradient(green 0%, green 100%), url('<%= path %>/assets/crab.gif');
+		background: linear-gradient($color2 0%, $color2 100%), url('<%= path %>/assets/crab.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -54,7 +62,7 @@
 	}
 
 	#slide-3 {
-		background: linear-gradient(gold 0%, gold 100%), url('<%= path %>/assets/shoes.gif');
+		background: linear-gradient($color3 0%, $color3 100%), url('<%= path %>/assets/shoes.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -62,10 +70,49 @@
 
 	#slide-4 {
 		background-image: url('<%= path %>/assets/polar-bear.gif');
-		background: linear-gradient(aqua 0%, aqua 100%), url('<%= path %>/assets/polar-bear.gif');
+		background: linear-gradient($color4 0%, $color4 100%), url('<%= path %>/assets/polar-bear.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
+	}
+
+	#slide-5 {
+		background: linear-gradient($color5 0%, $color5 100%), url('<%= path %>/assets/crab.gif');
+		background-blend-mode: multiply;
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		
+	}
+
+	#slide-6 {
+		background: linear-gradient($color6 0%, $color6 100%), url('<%= path %>/assets/shoes.gif');
+		background-blend-mode: multiply;
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+	}
+
+	#slide-mask-1 {
+		background: $color1;
+	}
+
+	#slide-mask-2 {
+		background: linear-gradient($color2 0%, $color2 100%);
+	}
+
+	#slide-mask-3 {
+		background: linear-gradient($color3 0%, $color3 100%);
+	}
+
+	#slide-mask-4 {
+		background: linear-gradient($color4 0%, $color4 100%);
+	}
+
+	#slide-mask-5 {
+		background: linear-gradient($color5 0%, $color5 100%);
+	}
+
+	#slide-mask-6 {
+		background: linear-gradient($color6 0%, $color6 100%);
 	}
 
 

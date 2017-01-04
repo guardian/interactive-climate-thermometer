@@ -13,6 +13,9 @@
 
 .gv-wrapper {
 	height: 100%;
+	width:100%;
+	max-width:1300px;
+
 }
 
 $darkred: #800c0c;
@@ -58,7 +61,7 @@ $degRange: 2deg;
 
 //first slide
 .gv-slide:first-of-type .gv-slide-content{
-	background: #d42426;
+	background: #b51800;
     
 }
 
@@ -66,3 +69,50 @@ $degRange: 2deg;
 .gv-slide:last-of-type .gv-slide-content{
 	background: #333;
 }
+
+.gv-info-panel{
+	position: absolute;
+	top: 340px;
+	left: 10px;
+	width:300px;
+}
+
+
+.gv-info-title{
+
+	width:140px;
+    float: left;
+    clear: right;
+
+	@include f-egy;
+    font-size: 180px;
+    line-height: 180px;
+    font-weight:200;
+
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 40px;
+}
+
+.gv-info-title::before { 
+    content: "above";
+    width:140px;
+    float: left;
+    clear: right;
+    border-bottom: 1px solid #FFF;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:200;
+}
+
+
+
+.gv-info-text{
+	width:300px;
+	float: left;
+    clear: right;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:200;
+}
+
+
