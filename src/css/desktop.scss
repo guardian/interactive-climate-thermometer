@@ -1,28 +1,76 @@
-$color1: #ffcf3a;
-$color2: #ff9c00;
-$color3: #e87100;
-$color4: #c25300;
-$color5: #cc2b12;
-$color6: #b51800;
+// $color1: #ffcf3a;
+// $color2: #ff9c00;
+// $color3: #e87100;
+// $color4: #c25300;
+// $color5: #cc2b12;
+// $color6: #b51800;
+
+
+
+
+$color1: #c5d4ea;
+$color2: #5ebfba;
+$color3: #ffce4b;
+$color4: #ff9c00;
+$color5: #e87100;
+$color6: #cc2b12;
+
+// @media (min-width: 81.25em)
+// .gs-container {
+//     max-width: 81.25rem;
+// }
+// @media (min-width: 71.25em)
+// .gs-container {
+//     max-width: 71.25rem;
+// }
+// @media (min-width: 61.25em)
+// .gs-container {
+//     max-width: 61.25rem;
+// }
+// @media (min-width: 46.25em)
+// .gs-container {
+//     max-width: 46.25rem;
+// }
+// @media (min-width: 81.25em)
+// .gs-container {
+//     max-width: 81.25rem;
+// }
+// @media (min-width: 71.25em)
+// .gs-container {
+//     max-width: 71.25rem;
+// }
+// @media (min-width: 61.25em)
+// .gs-container {
+//     max-width: 61.25rem;
+// }
+// @media (min-width: 46.25em)
+// .gs-container {
+//     max-width: 46.25rem;
+// }
+
 
 
 @media (min-width: 860px) {
 
 
 	.gv-slides-container {
-		background: #efefec;
 		position: fixed;
+		background: rgba($color1, 0.25); //linear-gradient($color1 100%, $color6 100%)
+		
 		z-index: -1;
-
+		
 	}
+
+
 
 	.gv-slide {
 		
 		position: absolute;
-		width: 50%;
-		height: 50%;
-		top:25%;
-		left: calc(40% - 140px);
+		width: 100%;
+		height: 100%;
+
+		top:0;
+		left: 0;
 
 		.gv-slide-content {
 			position: absolute;
@@ -32,10 +80,19 @@ $color6: #b51800;
 			right: 0;
 			border-radius: 50%;
 		}
+
+		.gv-slide-image-holder{
+			position: absolute;
+		    width: 80%;
+		    height: 80%;
+		    max-width: 950px;
+		    max-height: 950px;
+		    top: 30%;
+		    left: calc(43% - 140px);
+		}
 	}
 
 	.slide-image, .slide-mask {
-		position: absolute;
 		width: 100%;
 		height: 100%;
 		border-radius: 2000px;	
@@ -116,4 +173,43 @@ $color6: #b51800;
 	}
 
 
+
+
 }
+@media (min-width: 46.25em){
+	.gv-slides-container {
+	    max-width: 46.25rem;
+	}
+}
+
+@media (min-width: 61.25em){
+	.gv-slides-container {
+	    max-width: 61.25rem;
+	}
+}
+
+@media (min-width: 71.25em){
+	.gv-slides-container {
+	    max-width: 71.25rem;
+	}
+}
+
+@media (min-width: 81.25em){
+	.gv-slides-container {
+    	max-width: 81.25rem;
+	}
+}
+
+.gv-slides-container {
+    	
+}
+
+.gv-wrapper{
+	margin: 0 auto !important;
+}
+
+
+
+
+
+

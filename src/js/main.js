@@ -7,6 +7,7 @@ var androidSpacer = document.querySelector('.android-app-spacer');
 var wrapper = document.querySelector('.gv-wrapper');
 var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
+var panels = document.querySelectorAll('.gv-info-panel')
 
 
 
@@ -48,21 +49,43 @@ function initDesktop(){
 	wrapper.style.height = divHeight + 'px';
 	container.style.height = container.style.width = size + 'px';
 	container.classList.add('gv-desktop');
-	console.log(size, h, w)
+	console.log(size, h, w);
+	
 	if( w >= h ){
 		//container.style.top =  -(.5 * h)*.5 - (size - h)*.5 + "px";
 		console.log( (.5 * w) , ( .5 * size ) )
 
-		container.style.left = (.5 * w) - ( .5 * size ) + 'px';
+		//container.style.left = (.5 * w) - ( .5 * size ) + 'px';
 		container.style.top = (.5 * h) - ( .5 * size ) + 'px';
 		//container.style.left = String( -( .5 * size ) )+ "px";
 		//container.style.top = String( -( .5 * size ) )+ "px";
+
+		
+		positionEls( ( ( size  - h ) * .5  ) + 60 )
+
+
+
 	} else {
 		// container.style.left = ( -.5 * w) - (.5 * (size -w)) + 'px';
 		// container.style.top = ( -.5 * h) - (.5 * (size -h)) + 'px';
 		// console.log(w,h, size)
+
+		positionEls(h);
+	}
+
+	
+}
+
+
+function positionEls(h){
+	for(var i = 0; i < panels.length; i++){
+		var panelEl = panels[i]
+		
+		panelEl.style.top = `${h}px` 
+		console.log('Here',panelEl)
 	}
 }
+
 
 function initMobile(){
 	if(isAndroidApp()){

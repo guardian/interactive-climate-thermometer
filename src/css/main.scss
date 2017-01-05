@@ -5,18 +5,7 @@
 @import "mobile";
 @import "desktop";
 
-.element-atom,
-.interactive-atom {
-    margin: 0 !important;
-    z-index: -1;
-}
 
-.gv-wrapper {
-	height: 100%;
-	width:100%;
-	max-width:1300px;
-
-}
 
 $darkred: #800c0c;
 $red: #800c0c;
@@ -34,6 +23,28 @@ $currentColour: 0;
 $colour: #fff;
 $pctRange: -10%;
 $degRange: 2deg;
+
+
+
+.is-immersive-interactive{
+	background:linear-gradient($color1 0%, $color2 20%, $color3 40%, $color4 60%, $color5 80%,  $color6 100%);
+}
+
+
+.element-atom,
+.interactive-atom {
+    margin: 0 auto!important;
+    z-index: -1;
+    max-width: 1300px;
+}
+
+.gv-wrapper {
+	height: 100%;
+	width:100%;
+	max-width:1300px;
+}
+
+
 
 
 @for $i from $start through $end {
@@ -70,13 +81,24 @@ $degRange: 2deg;
 	background: #333;
 }
 
-.gv-info-panel{
-	position: absolute;
-	top: 340px;
-	left: 10px;
-	width:300px;
+.gv-info-panel {
+    position: relative;
+  
+    margin-left: 20px;
+    width: 300px;
+
+    color:#FFF;
+
 }
 
+.gv-info-text{
+	width:300px;
+	float: left;
+    clear: right;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight:200;
+}
 
 .gv-info-title{
 
@@ -106,13 +128,10 @@ $degRange: 2deg;
 
 
 
-.gv-info-text{
-	width:300px;
-	float: left;
-    clear: right;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight:200;
-}
+
+
+
+
+
 
 
