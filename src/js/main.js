@@ -13,8 +13,6 @@ var panels = document.querySelectorAll('.gv-info-panel')
 
 function init(){
 
-	
-
 	console.log(isMobile())
 
 	if(isMobile()){
@@ -28,8 +26,6 @@ function init(){
 		initDesktop();
 		loadApp('app.js');
 	}
-
-
 	
 }	
 
@@ -81,11 +77,20 @@ function positionEls(h){
 	for(var i = 0; i < panels.length; i++){
 		var panelEl = panels[i]
 		
-		panelEl.style.top = `${h}px` 
-		console.log('Here',panelEl)
+		panelEl.style.top = `${h}px`
 	}
+
 }
 
+
+
+
+
+
+// Instantiate CarNav, Draggables, Promote and share panels.
+				
+// $('.promote-panel').each(function(){ new PromoteLinks(this); });
+// $('.photo-mask-wrap').each(function(){ new DragReveal(this); });
 
 function initMobile(){
 	if(isAndroidApp()){
