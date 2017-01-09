@@ -59,8 +59,6 @@ function initDesktop(){
 		
 		positionEls( ( ( size  - h ) * .5  ) + 60 )
 
-
-
 	} else {
 		// container.style.left = ( -.5 * w) - (.5 * (size -w)) + 'px';
 		// container.style.top = ( -.5 * h) - (.5 * (size -h)) + 'px';

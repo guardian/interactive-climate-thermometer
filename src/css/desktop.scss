@@ -57,13 +57,9 @@ $color6: #cc2b12;
 
 	.gv-slides-container {
 		position: fixed;
-		background: rgba($color1, 0.25); //linear-gradient($color1 100%, $color6 100%)
-		
-		z-index: -1;
-		
+		//background: rgba($color1, 0.25); //linear-gradient($color1 100%, $color6 100%)		
+		z-index: -1;	
 	}
-
-
 
 	.gv-slide {
 		
@@ -113,7 +109,7 @@ $color6: #cc2b12;
 	}
 
 	#slide-2 {
-		background: linear-gradient($color2 0%, $color2 100%), url('<%= path %>/assets/floods.png');
+		background: linear-gradient($color1l 0%, $color1l 100%), url('<%= path %>/assets/floods.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -121,7 +117,7 @@ $color6: #cc2b12;
 	}
 
 	#slide-3 {
-		background: linear-gradient($color2l 0%, $color2l 100%), url('<%= path %>/assets/water-stress.png');
+		background: linear-gradient($color3 0%, $color3 100%), url('<%= path %>/assets/water-stress.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -129,7 +125,7 @@ $color6: #cc2b12;
 
 	#slide-4 {
 		background-image: url('<%= path %>/assets/polar-bear.gif');
-		background: linear-gradient($color4 0%, $color4 100%), url('<%= path %>/assets/polar-bear.gif');
+		background: linear-gradient($color4 0%, $color4 100%), url('<%= path %>/assets/crab.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -150,14 +146,14 @@ $color6: #cc2b12;
 		background-repeat: no-repeat;
 	}
 
-	#slide-mask-1 {
-		background: $color1;
-		border: 1px solid $color1;
+	#slide-mask-1, #slide-mask-intro {
+		background: $color1l;
+		border: 1px solid $color1l;
 	}
 
 	#slide-mask-2 {
 		background:  $color2 ;
-		border: 3px solid $color2;
+		border: 1px solid $color2;
 
 	}
 
@@ -206,7 +202,7 @@ $color6: #cc2b12;
 }
 
 .gv-slides-container {
-	background: rgba($color1,0.5)
+	//background: rgba($color1,0.5)
     	
 }
 

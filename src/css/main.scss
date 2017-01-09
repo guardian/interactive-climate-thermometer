@@ -1,18 +1,14 @@
 @import "mq";
 @import "fonts";
 @import "swiper";
-
 @import "mobile";
 @import "desktop";
-
-
 
 $darkred: #800c0c;
 $red: #800c0c;
 $darkorange: #e6711b;
 $range: #ff9b0b;
 $yellow: #ffbb00;
-
 $colours: #d42426, #e57124, #f89a1c, #fdba12, #fbe600;
 
 $start: 0;
@@ -24,20 +20,24 @@ $colour: #fff;
 $pctRange: -10%;
 $degRange: 2deg;
 
-
-
 .is-immersive-interactive{
-	background:linear-gradient($color1l 0%, $color1l 20%,  $color1 30%, $color2l 70%, $color2 100%);
+	//background:linear-gradient($color1l 0%, $color1l 20%,  $color1 30%, $color2l 70%, $color2 100%);
     // background:rgba($color1, 0.25);
     background-repeat: none;
+    overflow-y: hidden;
 }
-
 
 .element-atom,
 .interactive-atom {
     margin: 0 auto!important;
+    height: 100%;
+
+    background:linear-gradient($color1l 0%, $color1 10%, $color2 40%, $color3 50%, $color4 60%, $color5 70%, $color6 90%);
     z-index: -1;
     max-width: 1300px;
+
+    
+
 }
 
 .gv-wrapper {
@@ -45,9 +45,6 @@ $degRange: 2deg;
 	width:100%;
 	max-width:1300px;
 }
-
-
-
 
 @for $i from $start through $end {
 	$p: $i / $end;
@@ -66,7 +63,6 @@ $degRange: 2deg;
 		$colour: adjust-color( $colour, $hue: $deg, $saturation: $deg);
 	}
 
-
 	.gv-slide:nth-of-type(#{$i +2}) .#{$class-slug}{
 		// background: $colour;	    
 	}
@@ -75,7 +71,6 @@ $degRange: 2deg;
 //first slide
 .gv-slide:first-of-type .gv-slide-content{
 
-    
 }
 
 //last slide
@@ -84,13 +79,10 @@ $degRange: 2deg;
 }
 
 .gv-info-panel {
-    position: relative;
-  
+    position: relative; 
     margin-left: 20px;
     width: 300px;
-
     color:#FFF;
-
 }
 
 .gv-info-text{
@@ -99,20 +91,16 @@ $degRange: 2deg;
     clear: right;
     @include fs-headline(3);
     margin-bottom:12px;
-
 }
 
 .gv-info-title{
-
 	width:140px;
     float: left;
     clear: right;
-
 	@include f-egy;
     font-size: 180px;
     line-height: 180px;
     font-weight:200;
-
     border-bottom: 1px solid #FFF;
     margin-bottom: 40px;
 }
