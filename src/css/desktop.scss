@@ -85,7 +85,7 @@ $color6: #cc2b12;
 		    height: 80%;
 		    max-width: 950px;
 		    max-height: 950px;
-		    top: 30%;
+		    top: 32%;
 		    left: calc(25% - 140px);
 		}
 	}
@@ -109,9 +109,10 @@ $color6: #cc2b12;
 	}
 
 	#slide-2 {
-		background: linear-gradient($color2l 0%, $color3 100%), url('<%= path %>/assets/floods.png');
+		background: linear-gradient($color3 30%, $color2 100%), url('<%= path %>/assets/floods.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
+		background-position: bottom center;
 		background-repeat: no-repeat;
 		
 	}
@@ -151,16 +152,16 @@ $color6: #cc2b12;
 	}
 
 	#slide-mask-2 {
-		background:  $color2l ;
+		background:  $color3 ;
 
 	}
 
 	#slide-mask-3 {
-		background: $color3;
+		background: $color4;
 	}
 
 	#slide-mask-4 {
-		background: $color4;
+		background: $color5;
 	}
 
 	#slide-mask-5 {
