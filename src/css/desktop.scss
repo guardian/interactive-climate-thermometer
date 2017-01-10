@@ -102,14 +102,14 @@ $color6: #cc2b12;
 	  
 
 	#slide-1 {
-		background: linear-gradient($color1l 0%, $color1l 100%), url('<%= path %>/assets/polar-bear.gif');
+		background: linear-gradient($color1l 0%, $color1 100%), url('<%= path %>/assets/polar-bear.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-2 {
-		background: linear-gradient($color1l 0%, $color1l 100%), url('<%= path %>/assets/floods.png');
+		background: linear-gradient($color2l 0%, $color2 100%), url('<%= path %>/assets/floods.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -117,7 +117,7 @@ $color6: #cc2b12;
 	}
 
 	#slide-3 {
-		background: linear-gradient($color3 0%, $color3 100%), url('<%= path %>/assets/water-stress.png');
+		background: linear-gradient($color2l 0%, $color3 100%), url('<%= path %>/assets/water-stress.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -125,14 +125,14 @@ $color6: #cc2b12;
 
 	#slide-4 {
 		background-image: url('<%= path %>/assets/polar-bear.gif');
-		background: linear-gradient($color4 0%, $color4 100%), url('<%= path %>/assets/crab.gif');
+		background: linear-gradient($color3 0%, $color4 100%), url('<%= path %>/assets/crab.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-5 {
-		background: linear-gradient($color5 0%, $color5 100%), url('<%= path %>/assets/crab.gif');
+		background: linear-gradient($color4 0%, $color5 100%), url('<%= path %>/assets/crops.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -140,39 +140,61 @@ $color6: #cc2b12;
 	}
 
 	#slide-6 {
-		background: linear-gradient($color6 0%, $color6 100%), url('<%= path %>/assets/shoes.gif');
+		background: linear-gradient($color5 0%, $color6 100%), url('<%= path %>/assets/shoes.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-mask-1, #slide-mask-intro {
-		background: $color1l;
-		border: 1px solid $color1l;
+		background: $color1;
 	}
 
 	#slide-mask-2 {
-		background:  $color2 ;
-		border: 1px solid $color2;
+		background:  $color2l ;
 
 	}
 
 	#slide-mask-3 {
-		background: linear-gradient($color3 0%, $color3 100%);
+		background: $color3;
 	}
 
 	#slide-mask-4 {
-		background: linear-gradient($color4 0%, $color4 100%);
+		background: $color4;
 	}
 
 	#slide-mask-5 {
-		background: linear-gradient($color5 0%, $color5 100%);
+		background: $color5;
 	}
 
 	#slide-mask-6 {
-		background: linear-gradient($color6 0%, $color6 100%);
+		background: $color6;
 	}
 
+
+	#swiper-1{
+		background: $color1;
+	}
+
+	#swiper-2{
+		background: $color2;
+	}
+
+	#swiper-3{
+		background: $color3;
+	}
+
+	#swiper-4{
+		background: $color4;
+	}
+
+	#swiper-5{
+		background: $color5;
+	}
+
+	#swiper-6{
+		background: $color6;
+	}
 
 
 
