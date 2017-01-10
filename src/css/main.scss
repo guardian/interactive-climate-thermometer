@@ -21,7 +21,7 @@ $pctRange: -10%;
 $degRange: 2deg;
 
 .is-immersive-interactive{
-	//background:linear-gradient($color1l 0%, $color1l 20%,  $color1 30%, $color2l 70%, $color2 100%);
+	background:linear-gradient(rgba($color1,0.25) 0%, rgba($color2,0.25) 20%, rgba($color3,0.25) 40%, rgba($color4,0.25) 60%, rgba($color5,0.25) 80%, rgba($color6,0.25) 100%);
     // background:rgba($color1, 0.25);
     background-repeat: none;
     overflow-y: hidden;
