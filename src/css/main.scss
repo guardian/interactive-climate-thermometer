@@ -83,44 +83,40 @@ $degRange: 2deg;
 
 .gv-info-text{
     position:absolute;
-    width: 460px;
-
-    top: 0;
-	
+    width: 620px;
+    top: 0;	
 	float: left;
     clear: right;
-    @include fs-headline(4);
-    margin: 12px 0 ;
-    margin-top:36px;
+    @include fs-headline(5);
+    padding-top:30px;
 }
 
 .gv-info-title{
-	width: 140px;
-    margin-right: 20px;
+	width: 160px;
+
+    margin: 0 20px;
     padding-right: 20px;
     float: left;
     clear: right;
 	@include f-egy;
-    font-size: 180px;
+    font-size: 186px;
     line-height: 180px;
     font-weight:200;
-    border-right: 1px solid #FFF;
-    margin-bottom: 40px;
+    text-align: right;
+    // border-right: 1px solid #FFF;
 }
 
 .gv-info-title::before { 
-    content: "above";
-    width:140px;
+    content: " ";
+    width:160px;
+    margin: 12px 0;
     float: left;
     clear: right;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 24px;
+    line-height: 20px;
     font-weight:200;
+    text-align: left;
 }
-
-
-
-
 
 
 .gv-opening-title::before{
