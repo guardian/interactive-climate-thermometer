@@ -8,6 +8,8 @@ var wrapper = document.querySelector('.gv-wrapper');
 var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
 
+var slideContents = document.querySelectorAll('.gv-slide-content');
+
 
 
 function init(){
@@ -41,20 +43,39 @@ function loadApp(file){
 function initDesktop(){
 	var w = windowWidth;
 	var h = windowHeight;
+
+	//w > 1280 ? w = 1280 : w = w;
+
 	var sizeBase = (w >= h) ? w : h;
 	var size = sizeBase *1.5;
+	
+
 	var divHeight = h * slides.length;
 
 	wrapper.style.height = divHeight + 'px';
-	container.style.height = container.style.width = size + 'px';
+	container.style.height = container.style.width = sizeBase + 'px';
 	container.classList.add('gv-desktop');
 	console.log(size, h, w)
 	if( w >= h ){
 		//container.style.top =  -(.5 * h)*.5 - (size - h)*.5 + "px";
 		console.log( (.5 * w) , ( .5 * size ) )
 
-		container.style.left = (.5 * w) - ( .5 * size ) + 'px';
-		container.style.top = (.5 * h) - ( .5 * size ) + 'px';
+
+		container.style.left = '0px'; //(.5 * w) - ( .5 * size ) + 'px';
+		//container.style.top =  (.5 * h) - ( .5 * size ) + 'px';//(.5 * h) - ( .5 * size ) + 'px';
+
+
+		for (var k = 0; k < slides.length; k++){
+		var slideEl = slides[k];
+		var elSize = sizeBase;	
+
+		elSize > 1280 ? elSize = 1280 : elSize = slSize;
+		
+			slideEl.style.height =  elSize+'px' 
+		
+
+	}
+
 		//container.style.left = String( -( .5 * size ) )+ "px";
 		//container.style.top = String( -( .5 * size ) )+ "px";
 	} else {
