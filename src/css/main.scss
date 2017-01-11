@@ -31,13 +31,9 @@ $degRange: 2deg;
 .interactive-atom {
     margin: 0 auto!important;
     height: 100%;
-
-    background:linear-gradient($color1 0%, $color2 20%, $color3 40%, $color4 60%, $color5 80%, $color6 100%);
+    background:linear-gradient($color1l 0%, $color1 10%, $color2 20%, $color3 40%, $color4 60%, $color5 80%, $color6 100%);
     z-index: -1;
     max-width: 1300px;
-
-    
-
 }
 
 .gv-wrapper {
@@ -122,8 +118,34 @@ $degRange: 2deg;
     font-weight:200;
 }
 
+
+
+
+
+
 .gv-opening-title::before{
+    width: 100%;
     content: "below";
+    text-align: left;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight:200;
+}
+
+.gv-opening-title{
+    width: auto;
+    margin-right: 40px;
+    padding-right: 0;
+    font-size: 240px;
+    line-height: 240px;
+    text-align:center;
+    // border-right: none;
+    border-right: 1px solid #FFF;
+}
+
+
+.gv-opening-text{
+
 }
 
 
