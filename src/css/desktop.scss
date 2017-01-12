@@ -1,3 +1,10 @@
+$darkred: #800c0c;
+$red: #800c0c;
+$darkorange: #e6711b;
+$range: #ff9b0b;
+$yellow: #ffbb00;
+
+
 @media (min-width: 860px) {
 
 
@@ -40,7 +47,6 @@
 		width: 100%;
 		height: 100%;
 		top:0;
-		background: rgba(51,51,51,0.5);
 		z-index: -10;
 
 
@@ -88,6 +94,8 @@
 		background-image: url('<%= path %>/assets/smoking-shoes.png');
 		background-repeat:  no-repeat;
 	}
+
+
 
 
 }
