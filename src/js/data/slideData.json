@@ -1,0 +1,170 @@
+[
+  {
+    "slides": "start slide",
+    "slideRef": "1",
+    "imageRef": "1a",
+    "image": "text",
+    "sentences": "What's the impact of rising temperatures?",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "1",
+    "imageRef": "1a",
+    "image": "",
+    "sentences": "Here's a standfirst sentence that will wrap to possibly two sentences. Here's a standfirst sentence that will wrap to possibly two sentences.",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "1",
+    "imageRef": "1a",
+    "image": "text",
+    "sentences": "Donald Trump has said TK sentence here about Donald Trump",
+    "": ""
+  },
+  {
+    "slides": "2 degrees",
+    "slideRef": "",
+    "imageRef": "",
+    "image": "",
+    "sentences": "",
+    "": ""
+  },
+  {
+    "slides": "1",
+    "slideRef": "2",
+    "imageRef": "2a",
+    "image": "polar bear",
+    "sentences": "Many species and ecosystems with limited ability to adapt to higher temperatures will be subject to &ldquo;very high risks&rdquo; even with 2C of warming. At particular risk are species dependent on Arctic sea ice – such as polar bears – and coral reefs.",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "2",
+    "imageRef": "2a",
+    "image": "",
+    "sentences": "Arctic sea ice extent in September falls by 43% in extent against the long-term average.",
+    "": ""
+  },
+  {
+    "slides": "2",
+    "slideRef": "2",
+    "imageRef": "2b",
+    "image": "person standing in water - Pablo to look at",
+    "sentences": "Sea levels rise by up to 55cm. They have already risen by around 20cm over the 20th century. The oceans get more acidic, with the surface ocean pH decreasing by 15-17%.",
+    "": ""
+  },
+  {
+    "slides": "3",
+    "slideRef": "2",
+    "imageRef": "2c",
+    "image": "ice cream cone - Pablo to look at",
+    "sentences": "Glaciers decline in global volume by as much as 55% (excludes those on Antarctica’s periphery and the Greenland and Antarctic ice sheets).",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "2",
+    "imageRef": "stats",
+    "image": "stats slide",
+    "sentences": "1.5 billion people exposed to heatwaves each year.\n30 million people affected by flooding each year.\n1.5 billion people exposed to increased water stress.",
+    "": ""
+  },
+  {
+    "slides": "3 degrees",
+    "slideRef": "",
+    "imageRef": "",
+    "image": "",
+    "sentences": "",
+    "": ""
+  },
+  {
+    "slides": "4",
+    "slideRef": "3",
+    "imageRef": "3a",
+    "image": "Corn",
+    "sentences": "Negative impacts on production of major crops including wheat, rice and maize, in tropical and temperate regions.\nHowever, some individual locations may actually benefit.",
+    "": ""
+  },
+  {
+    "slides": "5",
+    "slideRef": "3",
+    "imageRef": "3b",
+    "image": "island - Palbo to work on",
+    "sentences": "Ocean acidification is much greater, with surface ocean pH decreasing up to 62%.",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "3",
+    "imageRef": "stats",
+    "image": "stats slide",
+    "sentences": "5.7 million sq km of cropland decline.\n4.5 billion people exposed to heatwaves each year.\n60 million people affected by flooding each year.\n1.75 billion people exposed to increased water stress.",
+    "": ""
+  },
+  {
+    "slides": "4 degrees",
+    "slideRef": "",
+    "imageRef": "",
+    "image": "",
+    "sentences": "",
+    "": ""
+  },
+  {
+    "slides": "6",
+    "slideRef": "4",
+    "imageRef": "4a",
+    "image": "penguin floating on iceberg - pablo to look at",
+    "sentences": "The Arctic is nearly ice-free in summer, as early as 2050. Glaciers decline in global volume by as much as 85%.",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "4",
+    "imageRef": "4b",
+    "image": "",
+    "sentences": "Sea levels rise up to 82cm.",
+    "": ""
+  },
+  {
+    "slides": "7",
+    "slideRef": "4",
+    "imageRef": "4c",
+    "image": "Crab",
+    "sentences": "Wildlife and ecosystems hit by “severe” and “widespread” impacts, with substantial numbers of species going extinct.",
+    "": ""
+  },
+  {
+    "slides": "8",
+    "slideRef": "4",
+    "imageRef": "4d",
+    "image": "hair dryer pointed at earth - pablo looking at",
+    "sentences": "Hot and humid enough to compromise normal human activities such as growing food or working outdoors, in some areas for parts of the year.\nAtmospheric circulation is affected, with mid-latitude jet streams shifting polewards by 1 or 2 degrees latitude in both hemispheres.",
+    "": ""
+  },
+  {
+    "slides": "5 degrees",
+    "slideRef": "5",
+    "imageRef": "5a",
+    "image": "water stress",
+    "sentences": "2 billion people will be exposed to increased water stress.",
+    "": ""
+  },
+  {
+    "slides": "",
+    "slideRef": "5",
+    "imageRef": "stats",
+    "image": "stats slide",
+    "sentences": "7.6 million sq km of cropland will decline\n120 million people a year will be affected by flooding",
+    "": ""
+  },
+  {
+    "slides": "end slide",
+    "slideRef": "6",
+    "imageRef": "",
+    "image": "",
+    "sentences": "tbc",
+    "": ""
+  }
+]

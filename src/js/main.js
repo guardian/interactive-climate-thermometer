@@ -1,4 +1,6 @@
-import { isMobile, isAndroidApp } from './utils';
+import { isMobile, isAndroidApp, splitString } from './utils';
+
+import dataBase from './data/slideData.json'
 
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
@@ -12,22 +14,68 @@ var panels = document.querySelectorAll('.gv-info-panel')
 
 
 function init(){
-
+	console.log(dataBase)
 	console.log(isMobile())
+	initData()	
+}
 
+
+function initData(){
+
+	var slidesArrTemp = [];
+
+	var slidesArr = [];
+
+	var splitList = [". ", "? ", "! ","\n"];
+
+
+	for(var k =0; k<dataBase.length -1; k++){
+
+      		// "slides": "",
+		    // "slideRef": "2",
+		    // "imageRef": "stats",
+		    // "image": "stats slide",
+		    // "sentences": "1.5 billion people exposed to heatwaves each year.\n30 million people affected by flooding each year.\n1.5 billion people exposed to increased water stress.",
+		    // "": ""
+
+		    if (dataBase[k].slideRef){
+		    		var slideObj = {};
+		    		slideObj.slideRef = dataBase[k].slideRef;
+		    		slideObj.imageRef = dataBase[k].imageRef;
+		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList)
+
+					console.log(slideObj)
+				}
+		        // console.log(dataBase[k])
+		    	// var slideObj = {}
+
+		     //    slideObj.Country = (dataBase[k].Country)
+		     //    dataBase[k].YYYY = (dataBase[k].Year.split("/")[dataBase[k].Year.split("/").length-1])
+		     //    election.Party = (dataBase[k].Party)
+		     //    election.YYYY = dataBase[k].YYYY
+		     //    election.seats = dataBase[k].Seats
+		     //    electionsArr.push(election)
+    }
+
+	initView()
+
+}
+
+
+function initView(){
 	if(isMobile()){
-		//if mobile, display as card-based interface
-		
-		initMobile();
-		loadApp('app_mobile.js');
-	} else {
-		//if desktop then use scroller and animate
-		
-		initDesktop();
-		loadApp('app.js');
-	}
-	
-}	
+			//if mobile, display as card-based interface
+			
+			initMobile();
+			loadApp('app_mobile.js');
+		} else {
+			//if desktop then use scroller and animate
+			
+			initDesktop();
+			loadApp('app.js');
+		}
+
+}
 
 function loadApp(file){
 	var el = document.createElement('script');
