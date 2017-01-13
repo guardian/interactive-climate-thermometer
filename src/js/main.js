@@ -18,7 +18,7 @@ var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
 var panels = document.querySelectorAll('.gv-info-panel');
 
-var transTime = 1000;
+var transTime = 3000;
 var transScaleLength = 5;
 var transTimeUnit = transTime/transScaleLength;
 
@@ -76,21 +76,18 @@ function initData(){
 function getSentenceArr(a, time){
 	var t = [];
 
-
-
-	var totalTime = transTime/a.length;
-
-	var timeUnit = transTime/4;
+	var timeUnit = (transTime/a.length)/4;
 
 
 		for (var i = 0; i < a.length; i++){
 			var o = {}
 
-			o.sentence = a[i];
-			o.senTimeOne = (i * transTime) + time + timeUnit;
-			o.senTimeTwo =  o.senTimeOne + timeUnit;
-			o.senTimeThree =  o.senTimeTwo + timeUnit;
-			o.senTimeFour =  o.senTimeThree + timeUnit;
+
+				o.sentence = a[i];
+				o.t1 =  time + timeUnit;
+				o.t2 =  o.t1 + timeUnit;
+				o.t3 =  o.t2 + timeUnit;
+				o.t4 =  o.t3 + timeUnit;
 
 
 			
