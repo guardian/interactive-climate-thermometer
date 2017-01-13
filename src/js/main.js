@@ -1,3 +1,5 @@
+import Mustache from 'mustache';
+
 import { isMobile, isAndroidApp, splitString } from './utils';
 
 import dataBase from './data/slideData.json'
@@ -44,7 +46,9 @@ function initData(){
 		    		slideObj.imageRef = dataBase[k].imageRef;
 		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList)
 
-					console.log(slideObj)
+		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
+
+					console.log(slideObj.slideRef)
 				}
 		        // console.log(dataBase[k])
 		    	// var slideObj = {}
