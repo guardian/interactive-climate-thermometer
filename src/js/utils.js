@@ -41,11 +41,7 @@ function buildStr(str, splitter){
 
 	for (var i = 0; i < a.length; i++){
 		if (a[i].slice(-1) != splitter) { a[i] = a[i]+splitter }
-
-			console.log("A   "+a[i])
 	}
-
-	console.log("L   "+a.length, splitter) 
 
 	return a;
 }

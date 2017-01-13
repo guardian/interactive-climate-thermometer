@@ -1,8 +1,12 @@
 import Mustache from 'mustache';
 
+import slidesHTML from './text/slides.html';
+import dataBase from './data/slideData.json';
+
+
 import { isMobile, isAndroidApp, splitString } from './utils';
 
-import dataBase from './data/slideData.json'
+
 
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
@@ -11,14 +15,14 @@ var androidSpacer = document.querySelector('.android-app-spacer');
 var wrapper = document.querySelector('.gv-wrapper');
 var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
-var panels = document.querySelectorAll('.gv-info-panel')
-
+var panels = document.querySelectorAll('.gv-info-panel');
 
 
 function init(){
-	console.log(dataBase)
-	console.log(isMobile())
-	initData()	
+	console.log(isMobile());
+
+	initData();	
+
 }
 
 
@@ -48,37 +52,25 @@ function initData(){
 
 		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
 
-					console.log(slideObj.slideRef)
+		    		slidesArr.push(slideObj);
+					
 				}
-		        // console.log(dataBase[k])
-		    	// var slideObj = {}
+		    }
 
-		     //    slideObj.Country = (dataBase[k].Country)
-		     //    dataBase[k].YYYY = (dataBase[k].Year.split("/")[dataBase[k].Year.split("/").length-1])
-		     //    election.Party = (dataBase[k].Party)
-		     //    election.YYYY = dataBase[k].YYYY
-		     //    election.seats = dataBase[k].Seats
-		     //    electionsArr.push(election)
-    }
 
-	initView()
+	initView(slidesArr);
 
 }
 
 
-function initView(){
-	if(isMobile()){
-			//if mobile, display as card-based interface
-			
-			initMobile();
+function initView(slidesArr){
+	if(isMobile()){			
+			initMobile(slidesArr);
 			loadApp('app_mobile.js');
-		} else {
-			//if desktop then use scroller and animate
-			
-			initDesktop();
+		} else {	
+			initDesktop(slidesArr)
 			loadApp('app.js');
 		}
-
 }
 
 function loadApp(file){
@@ -87,7 +79,9 @@ function loadApp(file){
 	document.body.appendChild(el);
 }
 
-function initDesktop(){
+
+function initDesktop(slidesArr){
+
 	var w = windowWidth;
 	var h = windowHeight;
 	var sizeBase = (w >= h) ? w : h;
@@ -98,7 +92,8 @@ function initDesktop(){
 	container.style.height = container.style.width = size + 'px';
 	container.classList.add('gv-desktop');
 	console.log(size, h, w);
-	
+
+		
 	if( w >= h ){
 		//container.style.top =  -(.5 * h)*.5 - (size - h)*.5 + "px";
 		console.log( (.5 * w) , ( .5 * size ) )
@@ -109,15 +104,33 @@ function initDesktop(){
 		//container.style.top = String( -( .5 * size ) )+ "px";
 
 		
-		positionEls( ( ( size  - h ) * .5  ) + 60 )
+		//positionEls( ( ( size  - h ) * .5  ) + 60 )
 
 	} else {
 		// container.style.left = ( -.5 * w) - (.5 * (size -w)) + 'px';
 		// container.style.top = ( -.5 * h) - (.5 * (size -h)) + 'px';
 		// console.log(w,h, size)
 
-		positionEls(h);
+		//positionEls(h);
 	}
+
+
+			var tpl = slidesHTML;
+
+			var slidesData = {
+		        slides: slidesArr 
+		    };
+
+		    var tplOp = Mustache.to_html(tpl, slidesData);
+
+		    console.log(tplOp)
+
+		    var tgtEl = document.querySelector('.gv-desktop');
+
+
+		    tgtEl.innerHTML = tplOp;		
+			
+			//initDesktop(slidesArr);
 
 	
 }
@@ -142,7 +155,7 @@ function positionEls(h){
 // $('.promote-panel').each(function(){ new PromoteLinks(this); });
 // $('.photo-mask-wrap').each(function(){ new DragReveal(this); });
 
-function initMobile(){
+function initMobile(initMobile){
 	if(isAndroidApp()){
         androidSpacer.style.height = '2000px';
         setTimeout(function(){
@@ -157,6 +170,9 @@ function initMobile(){
 
 	
 }
+
+
+
 
 function startMobile(){
 	wrapper.style.height = windowHeight + 'px';
