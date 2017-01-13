@@ -99,14 +99,14 @@ $color7: #222222;
 	  
 
 	#slide-1i , #slide-1ii {
-		background: linear-gradient( rgba($color5, 0.25) 0%, rgba($color1, 0.25) 100%);
+		// background: linear-gradient( rgba($color5, 0.25) 0%, rgba($color1, 0.25) 100%);
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-2 {
-		background: linear-gradient( rgba($color5,0.25) 0%, rgba($color1,0.25) 100%), url('<%= path %>/assets/floods.png');
+		// background: linear-gradient( rgba($color5,0.25) 0%, rgba($color1,0.25) 100%), url('<%= path %>/assets/floods.png');
 		background-blend-mode: multiply; 
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -115,7 +115,7 @@ $color7: #222222;
 	}
 
 	#slide-3 {
-		background: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/water-stress.png');
+		// background: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/water-stress.png');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -123,7 +123,7 @@ $color7: #222222;
 	}
 
 	#slide-4 {
-		background-image: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/crab.gif');
+		// background-image: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/crab.gif');
 		background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -131,7 +131,7 @@ $color7: #222222;
 	}
 
 	#slide-5 {
-		background: url('<%= path %>/assets/crops.png');
+		// background: url('<%= path %>/assets/crops.png');
 		//background-blend-mode: multiply;linear-gradient($color4 0%, $color5 100%), 
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -139,7 +139,7 @@ $color7: #222222;
 	}
 
 	#slide-6 {
-		background: url('<%= path %>/assets/shoes.gif');
+		// background: url('<%= path %>/assets/shoes.gif');
 		//background-blend-mode: multiply;linear-gradient($color5 0%, $color6 100%), 
 		background-size: 100% auto;
 		background-repeat: no-repeat;

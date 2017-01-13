@@ -17,12 +17,14 @@ var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
 var panels = document.querySelectorAll('.gv-info-panel');
 
+var transTime = 1000;
+var transScaleLength = 5;
+var transTimeUnit = transTime/transScaleLength;
+
 
 function init(){
 	console.log(isMobile());
-
 	initData();	
-
 }
 
 
@@ -51,6 +53,11 @@ function initData(){
 		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList)
 
 		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
+		    		slideObj.key = k;
+		    		slideObj.timeOne = k * transTime; 
+		    		slideObj.timeTwo = slideObj.timeOne + transTimeUnit;
+		    		slideObj.timeFour = (k+1) * transTime; 
+		    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
 
 		    		slidesArr.push(slideObj);
 					
@@ -93,6 +100,20 @@ function initDesktop(slidesArr){
 	container.classList.add('gv-desktop');
 	console.log(size, h, w);
 
+
+	var tpl = slidesHTML;
+
+			var slidesData = {
+		        slides: slidesArr 
+		    };
+
+		    var tplOp = Mustache.to_html(tpl, slidesData);
+
+		    var tgtEl = document.querySelector('.gv-desktop');
+
+
+		    tgtEl.innerHTML = tplOp;
+
 		
 	if( w >= h ){
 		//container.style.top =  -(.5 * h)*.5 - (size - h)*.5 + "px";
@@ -104,31 +125,18 @@ function initDesktop(slidesArr){
 		//container.style.top = String( -( .5 * size ) )+ "px";
 
 		
-		//positionEls( ( ( size  - h ) * .5  ) + 60 )
+		positionEls( ( ( size  - h ) * .5  ) + 60 )
 
 	} else {
 		// container.style.left = ( -.5 * w) - (.5 * (size -w)) + 'px';
 		// container.style.top = ( -.5 * h) - (.5 * (size -h)) + 'px';
 		// console.log(w,h, size)
 
-		//positionEls(h);
+		positionEls(h);
 	}
 
 
-			var tpl = slidesHTML;
-
-			var slidesData = {
-		        slides: slidesArr 
-		    };
-
-		    var tplOp = Mustache.to_html(tpl, slidesData);
-
-		    console.log(tplOp)
-
-		    var tgtEl = document.querySelector('.gv-desktop');
-
-
-		    tgtEl.innerHTML = tplOp;		
+					
 			
 			//initDesktop(slidesArr);
 

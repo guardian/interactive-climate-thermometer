@@ -1,31 +1,23 @@
 {{#slides}}
 
-					<div class='gv-slide swiper-slide'>
+					<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
 						
 						<div class="gv-slide-image-holder">	
 
 							<div class='gv-slide-content' 
-							data-5000="opacity:0" 
-							data-8900="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
-							data-9300="opacity:1; width: 3%; height: 3%; top: 47%; left: 47%;" 
-							data-9600="opacity:0;">
-								<div class='slide-mask' id='slide-mask-1'></div>
+							data-{{timeOne}}="opacity:0" 
+							data-{{timeTwo}}="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+							data-{{timeThree}}="opacity:1; width: 3%; height: 3%; top: 47%; left: 47%;" 
+							data-{{timeFour}}="opacity:0;">
+								<div class='slide-mask' id='slide-mask-{{key}}'></div>
 							</div>
 
 							<div class='gv-slide-content' 
-							data-5000="opacity:0;" 
-							data-5100="opacity:1;" 
-							data-5400="opacity:1" 
-							data-6000="opacity:0;">
-								<div class='slide-image' id='slide-1i' style ='background-image:url("<%= path %>/assets/polar-bear.gif")'></div>
-							</div>
-
-							<div class='gv-slide-content' 
-							data-5900="opacity:0;" 
-							data-6300="opacity:1;" 
-							data-6600="opacity:1" 
-							data-7000="opacity:0;">
-								<div class='slide-image' id='slide-1ii' style ='background-image:url("<%= path %>/assets/floods.png")'></div>
+							data-{{timeOne}}="opacity:0;" 
+							data-{{timeTwo}}="opacity:1;" 
+							data-{{timeThree}}="opacity:1" 
+							data-{{timeFour}}="opacity:0;">
+								<div class='slide-image' id='slide-{{key}}' style ='background-image:url("<%= path %>/assets/{{imageRef}}.png")'></div>
 							</div>
 							
 							
@@ -33,13 +25,13 @@
 						</div>	
 
 
-						<div class='gv-info-panel'  data-9400="margin-top:0px;" data-10000="margin-top:100px;">
+						<div class='gv-info-panel'  data-{{timeThree}}="margin-top:0px;" {{timeFour}}="margin-top:100px;">
 
 							<span class='gv-info-title' 
-							data-5000="opacity:0;  margin-bottom:100px;" 
-							data-5200="opacity:1;  margin-bottom:12px;"  
-							data-9400="opacity:1;" 
-							data-10000="opacity:0;">
+							data-{{timeOne}}="opacity:0;  margin-bottom:100px;" 
+							data-{{timeTwo}}="opacity:1;  margin-bottom:12px;"  
+							data-{{timeThree}}="opacity:1;" 
+							data-{{timeFour}}="opacity:0;">
 
 								<svg viewBox="0 0 480 480"  preserveAspectRatio='xMinYMin'>
 
@@ -57,16 +49,16 @@
 							</span>
 
 							<span class='gv-info-text'  
-							data-5200="opacity:0; margin-left:100px;" 
-							data-5400="opacity:1; margin-left:0" 
-							data-9400="opacity:1;" 
-							data-10000="opacity:0;">{{sentences}}</span>
+							data-{{timeOne}}="opacity:0; margin-left:100px;" 
+							data-{{timeTwo}}="opacity:1; margin-left:0" 
+							data-{{timeThree}}="opacity:1;" 
+							data-{{timeFour}}="opacity:0;">{{sentences}}</span>
 
 							<span class='gv-info-text' 
-							data-5800="opacity:0; margin-left:100px;" 
-							data-6200="opacity:1; margin-left:0" 
-							data-9400="opacity:1;" 
-							data-10000="opacity:0;">Arctic sea ice extent in September falls by 43% in extent against the long-term average.</span>
+							data-{{timeOne}}="opacity:0; margin-left:100px;" 
+							data-{{timeTwo}}="opacity:1; margin-left:0" 
+							data-{{timeThree}}="opacity:1;" 
+							data-{{timeFour}}="opacity:0;">Arctic sea ice extent in September falls by 43% in extent against the long-term average.</span>
 
 
 							
