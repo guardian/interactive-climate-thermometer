@@ -1,6 +1,7 @@
 import Mustache from 'mustache';
 
 import slidesHTML from './text/slides.html';
+import infoHTML from './text/infoPanel.html';
 import dataBase from './data/slideData.json';
 
 
@@ -59,6 +60,8 @@ function initData(){
 		    		slideObj.timeFour = (k+1) * transTime; 
 		    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
 
+		    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
+
 		    		slidesArr.push(slideObj);
 					
 				}
@@ -68,6 +71,35 @@ function initData(){
 	initView(slidesArr);
 
 }
+
+
+function getSentenceArr(a, time){
+	var t = [];
+
+
+
+	var totalTime = transTime/a.length;
+
+	var timeUnit = transTime/4;
+
+
+		for (var i = 0; i < a.length; i++){
+			var o = {}
+
+			o.sentence = a[i];
+			o.senTimeOne = (i * transTime) + time + timeUnit;
+			o.senTimeTwo =  o.senTimeOne + timeUnit;
+			o.senTimeThree =  o.senTimeTwo + timeUnit;
+			o.senTimeFour =  o.senTimeThree + timeUnit;
+
+
+			
+			t.push(o)
+		}
+console.log(t);
+	return t;
+}
+
 
 
 function initView(slidesArr){
@@ -100,19 +132,17 @@ function initDesktop(slidesArr){
 	container.classList.add('gv-desktop');
 	console.log(size, h, w);
 
-
-	var tpl = slidesHTML;
-
-			var slidesData = {
+	var slidesData = {
 		        slides: slidesArr 
 		    };
 
-		    var tplOp = Mustache.to_html(tpl, slidesData);
+		addSlidesView(slidesData)
 
-		    var tgtEl = document.querySelector('.gv-desktop');
+		addInfoView(slidesData)
 
 
-		    tgtEl.innerHTML = tplOp;
+		
+		    
 
 		
 	if( w >= h ){
@@ -155,7 +185,21 @@ function positionEls(h){
 
 
 
+function addSlidesView(slidesData){
+	var tpl = slidesHTML;
+	var tplOp = Mustache.to_html(tpl, slidesData);
+	var tgtEl = document.querySelector('.gv-slides-container');
+	tgtEl.innerHTML = tplOp;
+}
 
+
+function addInfoView(slidesData){
+	var tpl = infoHTML;
+	var tplOp = Mustache.to_html(tpl, slidesData);
+	var tgtEl = document.querySelector('.gv-info-panel-holder');
+
+	tgtEl.innerHTML = tplOp;
+}
 
 
 // Instantiate CarNav, Draggables, Promote and share panels.

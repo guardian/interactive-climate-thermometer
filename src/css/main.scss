@@ -117,6 +117,19 @@ $degRange: 2deg;
     color: #fff;
 }
 
+.gv-info-panel-holder{
+    width: 100%;
+    max-width: 1300px;
+    height: 600px;
+    position: fixed;
+    top: 0;
+
+    z-index: 4;
+    overflow: hidden;
+    // border-top: 1px solid #fff;
+    color: #fff;
+}
+
 .gv-bottom-panel {
     position: relative; 
     margin-left: 0;
