@@ -81,31 +81,38 @@ $degRange: 2deg;
 }
 
 .gv-info-panel {
-    position: fixed; 
-    bottom: 0px;
-    width: 100%;
-    max-width: 1300px;
-    height: 100%;
-    color:#EFEFEF;
+    position: absolute;
+    left:  0;
+
+    width:460px;
+    height:240px;
+
+    h2{
+        @include fs-header(5);
+    }
 
     @include mq($from: mobile, $until: desktop) {
-                margin: 0 auto 0 20px;
+                width: 300px;
+                // margin: 0 auto 0 20px;
+                bottom: 164px;
             }
-
 
             @include mq($from: desktop) {
-                margin: 0 auto 0 220px;
+                width: 620px;
+                // margin: 0 auto 0 220px;
+                bottom: 164px
             }
+
+
     
 }
 
 .gv-info-text{
-    position: absolute;
-    right:  0;
-	width:460px;
 
-    @include fs-headline(5);
-    margin-bottom:12px;
+    @include fs-headline(4);
+    margin-top: 36px;
+    top: 0;
+
 }
 
 .gv-scroll-arrow-down {
@@ -121,7 +128,7 @@ $degRange: 2deg;
 .app-footer {
     width: 100%;
     max-width: 1300px;
-    height: 200px;
+    height: 120px;
     position: fixed;
     bottom: 0;
 
@@ -134,7 +141,7 @@ $degRange: 2deg;
 .gv-info-panel-holder, .gv-big-type-panel{
     width: 100%;
     max-width: 1300px;
-    height: 600px;
+    height: 100%;
     position: fixed;
     top: 0;
 
@@ -150,19 +157,9 @@ $degRange: 2deg;
 
 }
 
-.gv-info-text-holder{
-
-    width:460px;
-    height:100%;
-    position: absolute;
-    top:0;
-    right: 0;
-    overflow:hidden;
-
-}
 
 .gv-bottom-panel {
-    position: relative; 
+    position: relative;
     margin-left: 0;
     width: 100%;
     height: 100%;
@@ -180,7 +177,11 @@ $degRange: 2deg;
     float: left;
 
     	svg{
+            fill: #FFF;
+            fill-opacity:0.3;
+
     		@include mq($from: mobile, $until: desktop) {
+                fill-opacity:0.3;
         		height:240px;
 	    		width:240px;
     		}

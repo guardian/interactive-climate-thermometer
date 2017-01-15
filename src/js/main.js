@@ -68,6 +68,13 @@ function initData(){
 		    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
 
 
+		    		// for (var i = 0; i < slideObj.sentenceArr.length){
+
+
+
+		    		// }
+
+
 		    		allEntriesArr.push(slideObj);
 					
 				}
@@ -177,12 +184,31 @@ function getSentenceArr(a, time){
 				o.t2 =  time + stepTime +  (timeUnit *2);
 				o.t3 =  time + stepTime +  (timeUnit *3);
 				o.t4 =  time + stepTime +  (timeUnit *4);
-
-
 			
 			t.push(o)
 		}
-	//console.log(t);
+
+		// for (var i = 0; i < t.length; i++){
+
+
+		// }
+
+		if (t.length > 1){
+			var endT = t[t.length-1].t4;
+			var preEndT = t[t.length-1].t3;
+
+			for (var i = 0; i < t.length; i++)
+			{
+				t[i].t3 = preEndT;
+				t[i].t4 = endT;
+			}
+		}
+		// var endT = t[t.length-1].t4;
+		// var preEndT = t[t.length-1].t3;
+
+			
+
+	
 	return t;
 }
 
