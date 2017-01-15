@@ -2,6 +2,8 @@ import Mustache from 'mustache';
 
 import slidesHTML from './text/slides.html';
 import infoHTML from './text/infoPanel.html';
+import degreeHTML from './text/degreePanel.html';
+
 import dataBase from './data/slideData.json';
 
 
@@ -31,11 +33,9 @@ function init(){
 
 function initData(){
 
-	var slidesArrTemp = [];
+	var allEntriesArr = [];
 
-	var slidesArr = [];
-
-	var splitList = [". ", "? ", "! ","\n"];
+	var splitList = ["\n"];
 
 
 	for(var k =0; k<dataBase.length -1; k++){
@@ -62,13 +62,100 @@ function initData(){
 
 		    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
 
-		    		slidesArr.push(slideObj);
+
+		    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
+
+		    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
+
+
+		    		allEntriesArr.push(slideObj);
 					
 				}
 		    }
 
+	
+	var allDegreesObj = getDegreeSlidesArr(allEntriesArr)	
 
-	initView(slidesArr);
+
+	//console.log('degSlidesObj ',degSlidesObj)
+
+	addDegreeView(allDegreesObj);
+
+
+	initView(allEntriesArr);
+
+
+
+
+
+
+	
+	
+
+}
+
+function addDegreeView(degreesObj){
+
+	var tpl = degreeHTML;
+	var tplOp = Mustache.to_html(tpl, degreesObj);
+	console.log(tplOp)
+
+	var tgtEl = document.querySelector('.gv-big-type-panel');
+	tgtEl.innerHTML = tplOp;
+}
+
+
+function getDegreeSlidesArr(a){
+
+	var markersArr = [];
+
+	var lastObj = a[a.length-1];
+
+	for (var i = 0; i < a.length; i++){
+
+		if ( i > 0 && a[i].degreeTransReq ){
+			var o = { }
+
+			o.bgclass = 'deg-svg-'+a[i].deg;
+			o.key = a[i].key;
+			o.t1 = a[i].timeOne;
+			o.t2 = a[i].timeTwo;
+
+			markersArr.push(o)
+
+
+		}
+	}
+
+	for (var i = 0; i < markersArr.length; i++){
+		if (markersArr[i+1]){
+
+
+			markersArr[i].t3 = markersArr[i+1].t1 - transTimeUnit;
+			markersArr[i].t4 = markersArr[i+1].t1;
+			// markersArr[i].t3 = a[markersArr[i+1].key - 1].timeThree;
+			// markersArr[i].t4 = a[markersArr[i+1].key - 1].timeFour;
+		}
+
+		// else if (!markersArr[i+1]){
+
+
+		// 	markersArr[i].t3 = markersArr[i].t1 + 6000;
+		// 	markersArr[i].t4 = markersArr[i+1].t1 + 6000;
+		// 	// markersArr[i].t3 = a[markersArr[i+1].key - 1].timeThree;
+		// 	// markersArr[i].t4 = a[markersArr[i+1].key - 1].timeFour;
+		// }
+
+	}
+
+	var degreesObj = {
+		        degSlides: markersArr 
+		    }; 
+
+	console.log("i ",degreesObj);
+
+	return degreesObj;
+
 
 }
 
@@ -82,29 +169,31 @@ function getSentenceArr(a, time){
 		for (var i = 0; i < a.length; i++){
 			var o = {}
 
+			var stepTime = i * transTime;
 
 				o.sentence = a[i];
-				o.t1 =  time + timeUnit;
-				o.t2 =  o.t1 + timeUnit;
-				o.t3 =  o.t2 + timeUnit;
-				o.t4 =  o.t3 + timeUnit;
+				o.key = i;
+				o.t1 =  time + stepTime + timeUnit;
+				o.t2 =  time + stepTime +  (timeUnit *2);
+				o.t3 =  time + stepTime +  (timeUnit *3);
+				o.t4 =  time + stepTime +  (timeUnit *4);
 
 
 			
 			t.push(o)
 		}
-console.log(t);
+	//console.log(t);
 	return t;
 }
 
 
 
-function initView(slidesArr){
+function initView(allEntriesArr){
 	if(isMobile()){			
-			initMobile(slidesArr);
+			initMobile(allEntriesArr);
 			loadApp('app_mobile.js');
 		} else {	
-			initDesktop(slidesArr)
+			initDesktop(allEntriesArr)
 			loadApp('app.js');
 		}
 }
@@ -116,7 +205,7 @@ function loadApp(file){
 }
 
 
-function initDesktop(slidesArr){
+function initDesktop(allEntriesArr){
 
 	var w = windowWidth;
 	var h = windowHeight;
@@ -127,19 +216,16 @@ function initDesktop(slidesArr){
 	wrapper.style.height = divHeight + 'px';
 	container.style.height = container.style.width = size + 'px';
 	container.classList.add('gv-desktop');
-	console.log(size, h, w);
+	console.log(allEntriesArr, size, h, w);
 
 	var slidesData = {
-		        slides: slidesArr 
+		        slides: allEntriesArr 
 		    };
 
-		addSlidesView(slidesData)
+		addSlidesView(slidesData);
 
-		addInfoView(slidesData)
+		addInfoView(slidesData);
 
-
-		
-		    
 
 		
 	if( w >= h ){
@@ -165,9 +251,10 @@ function initDesktop(slidesArr){
 
 					
 			
-			//initDesktop(slidesArr);
+			//initDesktop(allEntriesArr);
 
 	
+		
 }
 
 
@@ -179,6 +266,8 @@ function positionEls(h){
 	}
 
 }
+
+
 
 
 
@@ -197,6 +286,8 @@ function addInfoView(slidesData){
 
 	tgtEl.innerHTML = tplOp;
 }
+
+
 
 
 // Instantiate CarNav, Draggables, Promote and share panels.

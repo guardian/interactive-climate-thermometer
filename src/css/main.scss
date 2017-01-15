@@ -2,7 +2,9 @@
 @import "fonts";
 @import "swiper";
 @import "mobile";
+@import "degreeType";
 @import "desktop";
+
 
 $darkred: #800c0c;
 $red: #800c0c;
@@ -80,16 +82,28 @@ $degRange: 2deg;
 
 .gv-info-panel {
     position: fixed; 
-    top: 0;
-    margin-left: 0;
+    bottom: 0px;
     width: 100%;
+    max-width: 1300px;
     height: 100%;
     color:#EFEFEF;
+
+    @include mq($from: mobile, $until: desktop) {
+                margin: 0 auto 0 20px;
+            }
+
+
+            @include mq($from: desktop) {
+                margin: 0 auto 0 220px;
+            }
+    
 }
 
 .gv-info-text{
+    position: absolute;
+    right:  0;
 	width:460px;
-	float: right;
+
     @include fs-headline(5);
     margin-bottom:12px;
 }
@@ -117,7 +131,7 @@ $degRange: 2deg;
     color: #fff;
 }
 
-.gv-info-panel-holder{
+.gv-info-panel-holder, .gv-big-type-panel{
     width: 100%;
     max-width: 1300px;
     height: 600px;
@@ -130,6 +144,23 @@ $degRange: 2deg;
     color: #fff;
 }
 
+.gv-info-panel-holder{
+
+    z-index: 5;
+
+}
+
+.gv-info-text-holder{
+
+    width:460px;
+    height:100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    overflow:hidden;
+
+}
+
 .gv-bottom-panel {
     position: relative; 
     margin-left: 0;
@@ -139,9 +170,11 @@ $degRange: 2deg;
 }
 
 .gv-info-title{
+    position:absolute;
 	width:430px;
 	height:420px;	
 	margin-left: 10px;
+    padding-top: 60px;
     // border-bottom: 1px solid #FFF;
     margin-bottom: 40px;
     float: left;

@@ -2,23 +2,37 @@
 
 		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
 			
-					<div class="gv-slide-image-holder">	
+		
+						
+						{{#statSlideReq}}
+						  <div
+						  data-{{timeOne}}="opacity:0;" 
+								data-{{timeTwo}}="opacity:1;" 
+								data-{{timeThree}}="opacity:1" 
+								data-{{timeFour}}="opacity:0;">NO PIC</div>
+						{{/statSlideReq}}
+						{{^statSlideReq}}
+							<div class="gv-slide-image-holder">	
 
-						<div class='gv-slide-content' 
-						data-{{timeOne}}="opacity:0" 
-						data-{{timeTwo}}="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
-						data-{{timeThree}}="opacity:1; width: 3%; height: 3%; top: 47%; left: 47%;" 
-						data-{{timeFour}}="opacity:0;">
-							<div class='slide-mask' id='slide-mask-{{key}}'></div>
-						</div>
+								<div class='gv-slide-content' 
+								data-{{timeOne}}="opacity:0" 
+								data-{{timeTwo}}="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+								data-{{timeThree}}="opacity:1; width: 3%; height: 3%; top: 47%; left: 47%;" 
+								data-{{timeFour}}="opacity:0;">
+									<div class='slide-mask' id='slide-mask-{{key}}'></div>
+							</div>
 
-						<div class='gv-slide-content' 
-						data-{{timeOne}}="opacity:0;" 
-						data-{{timeTwo}}="opacity:1;" 
-						data-{{timeThree}}="opacity:1" 
-						data-{{timeFour}}="opacity:0;">
-							<div class='slide-image' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png")'></div>
-						</div>
+							<div class='gv-slide-content' 
+								data-{{timeOne}}="opacity:0;" 
+								data-{{timeTwo}}="opacity:1;" 
+								data-{{timeThree}}="opacity:1" 
+								data-{{timeFour}}="opacity:0;">
+									<div class='slide-image' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png")'></div>
+							</div>
+						{{/statSlideReq}}
+
+
+						
 						
 						
 

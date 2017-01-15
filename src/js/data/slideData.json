@@ -12,7 +12,7 @@
     "slideRef": "1",
     "imageRef": "1a",
     "image": "",
-    "sentences": "Here's a standfirst sentence that will wrap to possibly two sentences. Here's a standfirst sentence that will wrap to possibly two sentences.",
+    "sentences": "Here's a standfirst sentence that will wrap to possibly two sentences.\nHere's a standfirst sentence that will wrap to possibly two sentences.",
     "": ""
   },
   {
@@ -36,7 +36,7 @@
     "slideRef": "2",
     "imageRef": "2a",
     "image": "polar bear",
-    "sentences": "Many species and ecosystems with limited ability to adapt to higher temperatures will be subject to &ldquo;very high risks&rdquo; even with 2C of warming. At particular risk are species dependent on Arctic sea ice – such as polar bears – and coral reefs.",
+    "sentences": "Many species and ecosystems with limited ability to adapt to higher temperatures will be subject to &ldquo;very high risks&rdquo; even with 2C of warming.\nAt particular risk are species dependent on Arctic sea ice – such as polar bears – and coral reefs.",
     "": ""
   },
   {
@@ -116,7 +116,7 @@
     "slideRef": "4",
     "imageRef": "4a",
     "image": "penguin floating on iceberg - pablo to look at",
-    "sentences": "The Arctic is nearly ice-free in summer, as early as 2050. Glaciers decline in global volume by as much as 85%.",
+    "sentences": "The Arctic is nearly ice-free in summer, as early as 2050.\n Glaciers decline in global volume by as much as 85%.",
     "": ""
   },
   {
@@ -156,7 +156,7 @@
     "slideRef": "5",
     "imageRef": "stats",
     "image": "stats slide",
-    "sentences": "7.6 million sq km of cropland will decline\n120 million people a year will be affected by flooding",
+    "sentences": "7.6 million sq km of cropland will decline.\n120 million people a year will be affected by flooding",
     "": ""
   },
   {
@@ -164,7 +164,7 @@
     "slideRef": "6",
     "imageRef": "",
     "image": "",
-    "sentences": "tbc",
+    "sentences": "tbc placeholder text here in the interim",
     "": ""
   }
 ]

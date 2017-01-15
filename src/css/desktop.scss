@@ -6,13 +6,23 @@
 // $color6: #b51800;
 
 
-$color1: #F89B1C;
-$color2: #E57224;
-$color3: #C05526;
-$color4: #CD2D26;
-$color5: #B51F24;
-$color6: #801517;
+// $color1: #F89B1C;
+// $color2: #E57224;
+// $color3: #C05526;
+// $color4: #CD2D26;
+// $color5: #B51F24;
+// $color6: #801517;
+// $color7: #222222;
+
+
+$color1: #fb8200;
+$color2: #f97500;
+$color3: #f66500;
+$color4: #f25600;
+$color5: #f04903;
+$color6: #eb3212;
 $color7: #222222;
+
 
 // @media (min-width: 81.25em)
 // .gs-container {
@@ -79,9 +89,9 @@ $color7: #222222;
 			position: absolute;
 		    width: 80%;
 		    height: 80%;
-		    max-width: 950px;
-		    max-height: 950px;
-		    top: 33%;
+		    max-width: 750px;
+		    max-height: 750px;
+		    top: 30%;
 		    left: calc(50% - 475px);
 		}
 	}
@@ -146,28 +156,28 @@ $color7: #222222;
 	}
 
 	#slide-mask-1, #slide-mask-intro {
-		background: rgba($color1, 0.3);
+		background: rgba($color6, 0.3);
 	}
 
 	#slide-mask-2 {
-		background: rgba($color2, 0.3);
+		background: rgba($color5, 0.3);
 
 	}
 
 	#slide-mask-3 {
-		background: rgba($color3, 0.3);
-	}
-
-	#slide-mask-4 {
 		background: rgba($color4, 0.3);
 	}
 
+	#slide-mask-4 {
+		background: rgba($color3, 0.3);
+	}
+
 	#slide-mask-5 {
-		background: rgba($color5, 0.3);
+		background: rgba($color2, 0.3);
 	}
 
 	#slide-mask-6 {
-		background: rgba($color6, 0.3);
+		background: rgba($color1, 0.3);
 	}
 
 
