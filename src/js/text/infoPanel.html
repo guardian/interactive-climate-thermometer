@@ -1,14 +1,36 @@
 {{#slides}}
 
-	
 
-
-		<div class="gv-info-panel">
-			<h2 style="position:absolute;"
+		{{#statSlideReq}}
+		 <div class="gv-info-panel"
 				data-{{timeOne}}="opacity:0;" 
 				data-{{timeTwo}}="opacity:1;" 
 				data-{{timeThree}}="opacity:1;" 
-				data-{{timeFour}}="opacity:0;" >Above {{slideRef}}C</h1>
+				data-{{timeFour}}="opacity:0;">
+			<h2 data-{{timeOne}}="opacity:0;" 
+				data-{{timeTwo}}="opacity:1;" 
+				data-{{timeThree}}="opacity:1;" 
+				data-{{timeFour}}="opacity:0;">Stat slide header</h2>
+			{{#sentenceArr}}
+			<p class='gv-info-text-stat'  
+				data-{{t1}}="opacity:0;" 
+				data-{{t2}}="opacity:1;" 
+				data-{{t3}}="opacity:1;" 
+				data-{{t4}}="opacity:0;">{{sentence}}</p>
+			{{/sentenceArr}}
+		</div>	
+		{{/statSlideReq}}
+
+		{{^statSlideReq}}
+			<div class="gv-info-panel"
+				data-{{timeOne}}="opacity:0;" 
+				data-{{timeTwo}}="opacity:1;" 
+				data-{{timeThree}}="opacity:1;" 
+				data-{{timeFour}}="opacity:0;">
+			<h2 data-{{timeOne}}="opacity:0;" 
+				data-{{timeTwo}}="opacity:1;" 
+				data-{{timeThree}}="opacity:1;" 
+				data-{{timeFour}}="opacity:1;" >Heading to appear here for {{slideRef}}C…</h2>
 			{{#sentenceArr}}
 				<p class='gv-info-text'  
 				data-{{t1}}="opacity:0;" 
@@ -17,11 +39,8 @@
 				data-{{t4}}="opacity:0;">{{sentence}}</p>
 			{{/sentenceArr}}
 		</div>	
-						
+		{{/statSlideReq}}		
 							
-
-
-
 
 {{/slides}}
 

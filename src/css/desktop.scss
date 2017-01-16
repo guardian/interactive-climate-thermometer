@@ -1,3 +1,6 @@
+@import "mq";
+
+
 // $color1: #ffcf3a;
 // $color2: #ff9c00;
 // $color3: #e87100;
@@ -87,19 +90,26 @@ $color7: #222222;
 
 		.gv-slide-image-holder{
 			position: absolute;
-		    width: 80%;
-		    height: 80%;
+		    width: 100%;
+		    height: 100%;
 		    max-width: 750px;
-		    max-height: 750px;
-		    top:  calc(50% - 500px);
-		    left: calc(50% - 375px);
+			max-height: 750px;
+			top:  calc(50% - 500px);
+			left: calc(50% - 375px);
+
+
+            @include mq($from: desktop) {
+                max-width: 950px;
+			    max-height: 950px;
+			    top:  calc(50% - 500px);
+			    left: calc(50% - 375px);
+            }
 		}
 	}
 
 	.slide-image, .slide-mask {
 		width: 100%;
 		height: 100%;
-
 		border-radius: 2000px;	
 	}
 
@@ -108,16 +118,16 @@ $color7: #222222;
 	}
 	  
 
-	#slide-1i , #slide-1ii {
-		// background: linear-gradient( rgba($color5, 0.25) 0%, rgba($color1, 0.25) 100%);
-		background-blend-mode: multiply;
+	#slide-1{
+		background: linear-gradient( rgba($color5, 1) 0%, rgba($color1, 1) 100%);
+		// background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-2 {
-		// background: linear-gradient( rgba($color5,0.25) 0%, rgba($color1,0.25) 100%), url('<%= path %>/assets/floods.png');
-		background-blend-mode: multiply; 
+		background: linear-gradient( rgba($color5,1) 0%, rgba($color1,1) 100%);
+		// background-blend-mode: multiply; 
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center bottom;
@@ -125,16 +135,16 @@ $color7: #222222;
 	}
 
 	#slide-3 {
-		// background: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/water-stress.png');
-		background-blend-mode: multiply;
+		background: linear-gradient( rgba($color1, 1) 0%, rgba($color5, 1) 100%);
+		// background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center bottom;
 	}
 
 	#slide-4 {
-		// background-image: linear-gradient( rgba($color1, 0.25) 0%, rgba($color5, 0.25) 100%), url('<%= path %>/assets/crab.gif');
-		background-blend-mode: multiply;
+		background: linear-gradient( rgba($color1, 1) 0%, rgba($color5, 1) 100%);
+		// background-blend-mode: multiply;
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center bottom;
@@ -142,7 +152,8 @@ $color7: #222222;
 
 	#slide-5 {
 		// background: url('<%= path %>/assets/crops.png');
-		//background-blend-mode: multiply;linear-gradient($color4 0%, $color5 100%), 
+		background: linear-gradient($color4 0%, $color5 100%);
+		background-blend-mode: multiply; 
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		
@@ -150,34 +161,36 @@ $color7: #222222;
 
 	#slide-6 {
 		// background: url('<%= path %>/assets/shoes.gif');
-		//background-blend-mode: multiply;linear-gradient($color5 0%, $color6 100%), 
+		background: linear-gradient($color5 0%, $color6 100%);
+		// background-blend-mode: multiply;
+		
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 	}
 
 	#slide-mask-1, #slide-mask-intro {
-		background: rgba($color6, 0.3);
+		background: rgba($color6, 1);
 	}
 
 	#slide-mask-2 {
-		background: rgba($color5, 0.3);
+		background: rgba($color5, 1);
 
 	}
 
 	#slide-mask-3 {
-		background: rgba($color4, 0.3);
+		background: rgba($color4, 1);
 	}
 
 	#slide-mask-4 {
-		background: rgba($color3, 0.3);
+		background: rgba($color3, 1);
 	}
 
 	#slide-mask-5 {
-		background: rgba($color2, 0.3);
+		background: rgba($color2, 1);
 	}
 
 	#slide-mask-6 {
-		background: rgba($color1, 0.3);
+		background: rgba($color1, 1);
 	}
 
 

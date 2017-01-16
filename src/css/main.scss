@@ -82,6 +82,7 @@ $degRange: 2deg;
 
 .gv-info-panel {
     position: absolute;
+
     left:  0;
 
     width:460px;
@@ -89,6 +90,11 @@ $degRange: 2deg;
 
     h2{
         @include fs-header(5);
+        top:0px;
+        padding: 0 12px 12px 6px; 
+        margin: 0 0 24px 0px;
+        //background-color: $color6;
+
     }
 
     @include mq($from: mobile, $until: desktop) {
@@ -102,15 +108,24 @@ $degRange: 2deg;
                 // margin: 0 auto 0 220px;
                 bottom: 164px
             }
-
-
-    
+ 
 }
 
 .gv-info-text{
-
     @include fs-headline(4);
-    margin-top: 36px;
+    padding: 0 0 6px 0;
+
+    margin:  0 0 6px 6px;
+    top: 0;
+}
+
+.gv-info-text-stat{
+    @include fs-headline(6);
+    font-weight:900;
+    border-bottom: 1px dotted #FFF;
+    padding: 0 0 6px 0;
+
+    margin:  0 0 6px 6px;
     top: 0;
 
 }

@@ -55,15 +55,30 @@ function initData(){
 
 		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
 		    		slideObj.key = k;
+
 		    		slideObj.timeOne = k * transTime; 
 		    		slideObj.timeTwo = slideObj.timeOne + transTimeUnit;
 		    		slideObj.timeFour = (k+1) * transTime; 
 		    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
 
+		    		// slideObj.imgT1 = k * transTime; 
+		    		// slideObj.imgT2 = slideObj.imgT1 + transTimeUnit;
+		    		// slideObj.imgT4 = (k+1) * transTime;
+		    		// slideObj.imgT3 = slideObj.imgT4 - transTimeUnit;
+		    		
+
+		    		// slideObj.maskT1 = k * transTime; 
+		    		// slideObj.maskT2 = slideObj.maskT1 + transTimeUnit;
+		    		// slideObj.maskT4 = (k+1) * transTime;
+		    		// slideObj.maskT3 = slideObj.maskT4 - transTimeUnit;
+		    		 
+
 		    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
 
 
 		    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
+
+		    		k > 0 && slideObj.imageRef == dataBase[k-1].imageRef ? slideObj.imgTransReq = false :  slideObj.imgTransReq = true; 
 
 		    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
 
@@ -83,21 +98,61 @@ function initData(){
 	
 	var allDegreesObj = getDegreeSlidesArr(allEntriesArr)	
 
+	var slidesTimedObj = getTimingsArr(allEntriesArr);
 
-	//console.log('degSlidesObj ',degSlidesObj)
+	console.log('slidesTimedObj ',slidesTimedObj)
+
 
 	addDegreeView(allDegreesObj);
 
 
+	addSlidesView(slidesTimedObj);
+
+
 	initView(allEntriesArr);
 
+}
+
+function getTimingsArr(a){
+	var markersArr = [];
+
+	var lastObj = a[a.length-1];
+
+	for (var i = 0; i < a.length; i++){
+
+		if ( i > 0 && a[i].imgTransReq ){
+			var o = { }
+
+			o.key = a[i].key;
+			o.imageRef = a[i].imageRef;
+			o.statSlideReq = a[i].statSlideReq;
+			o.imgT1 = a[i].timeOne;
+			o.imgT2 = a[i].timeTwo;
 
 
+			markersArr.push(o)
 
 
+		}
+	}
 
-	
-	
+	for (var i = 0; i < markersArr.length; i++){
+		if (markersArr[i+1]){
+
+			markersArr[i].imgT3 = markersArr[i+1].imgT1 - transTimeUnit;
+			markersArr[i].imgT4 = markersArr[i+1].imgT1;
+
+		}
+
+	}
+
+	var imgsObj = {
+		        slides: markersArr 
+		    }; 
+
+
+	return imgsObj;
+
 
 }
 
@@ -159,7 +214,6 @@ function getDegreeSlidesArr(a){
 		        degSlides: markersArr 
 		    }; 
 
-	console.log("i ",degreesObj);
 
 	return degreesObj;
 
@@ -170,20 +224,20 @@ function getDegreeSlidesArr(a){
 function getSentenceArr(a, time){
 	var t = [];
 
-	var timeUnit = (transTime/a.length)/4;
-
+	var tempStep = transTime/a.length;
+	
 
 		for (var i = 0; i < a.length; i++){
 			var o = {}
 
-			var stepTime = i * transTime;
+			var stepTime = i * tempStep;
 
 				o.sentence = a[i];
 				o.key = i;
-				o.t1 =  time + stepTime + timeUnit;
-				o.t2 =  time + stepTime +  (timeUnit *2);
-				o.t3 =  time + stepTime +  (timeUnit *3);
-				o.t4 =  time + stepTime +  (timeUnit *4);
+				o.t1 =  time + stepTime ;
+				o.t2 =  time + stepTime +  (transTimeUnit * 2);
+				o.t3 =  time + stepTime +  (transTimeUnit * 3);
+				o.t4 =  time + stepTime +  (transTimeUnit * 3.5);
 			
 			t.push(o)
 		}
@@ -236,19 +290,19 @@ function initDesktop(allEntriesArr){
 	var w = windowWidth;
 	var h = windowHeight;
 	var sizeBase = (w >= h) ? w : h;
-	var size = sizeBase *1.5;
+	var size = sizeBase * 1.5;
 	var divHeight = h * slides.length;
 
 	wrapper.style.height = divHeight + 'px';
 	container.style.height = container.style.width = size + 'px';
 	container.classList.add('gv-desktop');
-	console.log(allEntriesArr, size, h, w);
+	//console.log(allEntriesArr, size, h, w);
 
 	var slidesData = {
 		        slides: allEntriesArr 
 		    };
 
-		addSlidesView(slidesData);
+
 
 		addInfoView(slidesData);
 
@@ -256,7 +310,7 @@ function initDesktop(allEntriesArr){
 		
 	if( w >= h ){
 		//container.style.top =  -(.5 * h)*.5 - (size - h)*.5 + "px";
-		console.log( (.5 * w) , ( .5 * size ) )
+		//console.log( (.5 * w) , ( .5 * size ) )
 
 		//container.style.left = (.5 * w) - ( .5 * size ) + 'px';
 		container.style.top = (.5 * h) - ( .5 * size ) + 'px';
