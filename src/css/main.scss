@@ -91,8 +91,7 @@ $degRange: 2deg;
     h2{
         @include fs-header(5);
         top:0px;
-        padding: 0 12px 12px 6px; 
-        margin: 0 0 24px 0px;
+        padding: 0 0 6px 6px; 
         //background-color: $color6;
 
     }
@@ -122,10 +121,10 @@ $degRange: 2deg;
 .gv-info-text-stat{
     @include fs-headline(6);
     font-weight:900;
-    border-bottom: 1px dotted #FFF;
-    padding: 0 0 6px 0;
+    border-top: 1px dotted #FFF;
+    padding: 6px 0;
 
-    margin:  0 0 6px 6px;
+    margin: 6px 0 0  6px;
     top: 0;
 
 }

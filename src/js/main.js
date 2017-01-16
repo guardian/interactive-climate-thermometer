@@ -20,7 +20,7 @@ var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
 var panels = document.querySelectorAll('.gv-info-panel');
 
-var transTime = 3000;
+var transTime = 5000;
 var transScaleLength = 5;
 var transTimeUnit = transTime/transScaleLength;
 

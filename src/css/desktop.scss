@@ -79,13 +79,15 @@ $color7: #222222;
 		top: 0;
 		left: 0;
 
+		// border-radius: 2000px;
+
 		.gv-slide-content {
 			position: absolute;
 			top: 0;
 			left: 0;
 			bottom: 0;
 			right: 0;
-			border-radius: 50%;
+			
 		}
 
 		.gv-slide-image-holder{
@@ -115,58 +117,13 @@ $color7: #222222;
 
 	.slide-image{
 		background-position: center center;
+		background-repeat: no-repeat;
 	}
 	  
 
-	#slide-1{
-		background: linear-gradient( rgba($color5, 1) 0%, rgba($color1, 1) 100%);
-		// background-blend-mode: multiply;
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-	}
 
-	#slide-2 {
-		background: linear-gradient( rgba($color5,1) 0%, rgba($color1,1) 100%);
-		// background-blend-mode: multiply; 
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		background-position: center bottom;
-		
-	}
 
-	#slide-3 {
-		background: linear-gradient( rgba($color1, 1) 0%, rgba($color5, 1) 100%);
-		// background-blend-mode: multiply;
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		background-position: center bottom;
-	}
 
-	#slide-4 {
-		background: linear-gradient( rgba($color1, 1) 0%, rgba($color5, 1) 100%);
-		// background-blend-mode: multiply;
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		background-position: center bottom;
-	}
-
-	#slide-5 {
-		// background: url('<%= path %>/assets/crops.png');
-		background: linear-gradient($color4 0%, $color5 100%);
-		background-blend-mode: multiply; 
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-		
-	}
-
-	#slide-6 {
-		// background: url('<%= path %>/assets/shoes.gif');
-		background: linear-gradient($color5 0%, $color6 100%);
-		// background-blend-mode: multiply;
-		
-		background-size: 100% auto;
-		background-repeat: no-repeat;
-	}
 
 	#slide-mask-1, #slide-mask-intro {
 		background: rgba($color6, 1);
