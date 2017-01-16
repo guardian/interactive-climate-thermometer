@@ -82,11 +82,10 @@ $degRange: 2deg;
 
 .gv-info-panel {
     position: absolute;
-
     left:  0;
-
     width:460px;
     height:240px;
+    bottom: 0;
 
     h2{
         @include fs-header(5);
@@ -99,13 +98,13 @@ $degRange: 2deg;
     @include mq($from: mobile, $until: desktop) {
                 width: 300px;
                 // margin: 0 auto 0 20px;
-                bottom: 164px;
+                top: calc(100% - 240px);
             }
 
             @include mq($from: desktop) {
                 width: 620px;
                 // margin: 0 auto 0 220px;
-                bottom: 164px
+                top: calc(100% - 240px);
             }
  
 }
@@ -139,10 +138,12 @@ $degRange: 2deg;
 	    clear: both;
 }
 
+
+
 .app-footer {
     width: 100%;
     max-width: 1300px;
-    height: 120px;
+    height: 240px;
     position: fixed;
     bottom: 0;
 
@@ -154,22 +155,28 @@ $degRange: 2deg;
 
 .gv-info-panel-holder, .gv-big-type-panel{
     width: 100%;
-    max-width: 1300px;
     height: 100%;
+    max-width: 1300px;  
     position: fixed;
     top: 0;
-
-    z-index: 4;
     overflow: hidden;
-    // border-top: 1px solid #fff;
     color: #fff;
+    z-index:3000;
+
+        @include mq($from: tablet, $until: desktop) {
+                width: calc(100% - 160px);
+                margin-left:160px;
+            }
+
+
+            @include mq($from: desktop) {
+                width: calc(100% - 220px);
+                margin-left:220px;
+
+            }
 }
 
-.gv-info-panel-holder{
 
-    z-index: 5;
-
-}
 
 
 .gv-bottom-panel {
@@ -183,12 +190,8 @@ $degRange: 2deg;
 .gv-info-title{
     position:absolute;
 	width:430px;
-	height:420px;	
-	margin-left: 10px;
-    padding-top: 60px;
-    // border-bottom: 1px solid #FFF;
-    margin-bottom: 40px;
-    float: left;
+	height:420px;
+    top: calc(100% - 652px);
 
     	svg{
             fill: #FFF;

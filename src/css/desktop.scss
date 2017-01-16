@@ -103,8 +103,9 @@ $color7: #222222;
             @include mq($from: desktop) {
                 max-width: 950px;
 			    max-height: 950px;
-			    top:  calc(50% - 500px);
-			    left: calc(50% - 375px);
+			    top:  calc(50% - 600px);
+			    left: calc(50% - 450px);
+			    right: 0;
             }
 		}
 	}
