@@ -1,0 +1,31 @@
+{{#slides}}
+
+
+		{{#statSlideReq}}
+		 <div class="gv-info-panel">Stat slide header</h2>
+			{{#sentenceArr}}
+			<p class='gv-info-text-stat'>{{sentence}}</p>
+			{{/sentenceArr}}
+			<div class='gv-thermometer'></div>		
+			
+		</div>	
+		{{/statSlideReq}}
+
+		{{^statSlideReq}}
+			<div class="gv-info-panel">
+			<h2 >Heading to appear here for {{slideRef}}C…</h2>
+			{{#sentenceArr}}
+				<p>{{sentence}}</p>
+			{{/sentenceArr}}
+			
+		</div>	
+		{{/statSlideReq}}		
+		
+
+
+{{/slides}}
+
+
+
+
+					

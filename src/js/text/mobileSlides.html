@@ -1,0 +1,53 @@
+{{#slides}}
+
+		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
+			
+		
+						
+						{{#statSlideReq}}
+						
+						{{/statSlideReq}}
+						{{^statSlideReq}}
+								
+							<div class="gv-slide-image-holder">	
+								<div class='gv-slide-content'>
+
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png")'></div>
+								</div>
+
+
+						{{/statSlideReq}}
+
+							</div>	
+
+
+
+							{{#statSlideReq}}
+								 <div class="gv-info-panel">Stat slide header</h2>
+									{{#sentenceArr}}
+									<p class='gv-info-text-stat'>{{sentence}}</p>
+									{{/sentenceArr}}
+									<div class='gv-thermometer'></div>		
+									
+								</div>	
+								{{/statSlideReq}}
+
+								{{^statSlideReq}}
+									<div class="gv-info-panel">
+									<h2 >Temperature rises more than {{slideRef}}C…</h2>
+									{{#sentenceArr}}
+										<p>{{sentence}}</p>
+									{{/sentenceArr}}
+									
+								</div>	
+								{{/statSlideReq}}	
+
+
+						</div>
+
+
+{{/slides}}
+
+
+
+					

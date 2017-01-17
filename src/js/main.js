@@ -1,10 +1,14 @@
 import Mustache from 'mustache';
+import xr from 'xr';
+
 
 import slidesHTML from './text/slides.html';
 import infoHTML from './text/infoPanel.html';
+import mobileSlides from './text/mobileSlides.html';
+
 import degreeHTML from './text/degreePanel.html';
 
-import dataBase from './data/slideData.json';
+//import dataBase from './data/slideData.json';
 
 import { isMobile, isAndroidApp, splitString } from './utils';
 
@@ -20,21 +24,35 @@ var container = document.querySelector('.gv-slides-container');
 var slides = document.querySelectorAll('.gv-slide');
 var panels = document.querySelectorAll('.gv-info-panel');
 
-var transTime = 5000;
+var transTime = 3000;
 var transScaleLength = 5;
 var transTimeUnit = transTime/transScaleLength;
 
+var colorsArr = [ '#fb8200', '#f97500','#f66500', '#f25600', '#f04903', '#eb3212' ];
+
+
+
+
+
 
 function init(){
+
+	colorsArr.reverse();
+
 	console.log(isMobile());
 
-	console.log(scrollDraw);
+	xr.get('https://interactive.guim.co.uk/docsdata-test/1OuB-22W0Ll6GFSSiLtMTzI3IQnbE2cFkMpvd8Tgu8lw.json').then((resp) => {
+		
+		initData(resp.data.sheets.Sheet1)
 
-	initData();	
+	});
+
 }
 
 
-function initData(){
+function initData(dataBase){
+
+	
 
 	var allEntriesArr = [];
 
@@ -51,10 +69,15 @@ function initData(){
 		    // "": ""
 
 		    if (dataBase[k].slideRef){
+
 		    		var slideObj = {};
 		    		slideObj.slideRef = dataBase[k].slideRef;
+
+
 		    		slideObj.imageRef = dataBase[k].imageRef;
-		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList)
+		    		slideObj.bColor = colorsArr[slideObj.slideRef];
+		    		slideObj.para = dataBase[k].sentences;
+		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList);
 
 		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
 		    		slideObj.key = k;
@@ -63,6 +86,9 @@ function initData(){
 		    		slideObj.timeTwo = slideObj.timeOne + transTimeUnit;
 		    		slideObj.timeFour = (k+1) * transTime; 
 		    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
+
+		    		slideObj.color1 = colorsArr[k];
+		    		slideObj.color2 = colorsArr[colorsArr.length-1];
 
 		    		// slideObj.imgT1 = k * transTime; 
 		    		// slideObj.imgT2 = slideObj.imgT1 + transTimeUnit;
@@ -78,13 +104,18 @@ function initData(){
 
 		    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
 
-
 		    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
 
 		    		k > 0 && slideObj.imageRef == dataBase[k-1].imageRef ? slideObj.imgTransReq = false :  slideObj.imgTransReq = true; 
 
+		    		k == 0 ? slideObj.introTransReq = true : slideObj.introTransReq = false;  
+
 		    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
 
+		    		slideObj.slideRef ==  1 ? slideObj.introTextReq = true :  slideObj.introTextReq = false; 
+
+
+		    		console.log(slideObj)
 
 		    		// for (var i = 0; i < slideObj.sentenceArr.length){
 
@@ -98,22 +129,6 @@ function initData(){
 				}
 		    }
 
-	
-	var allDegreesObj = getDegreeSlidesArr(allEntriesArr)	
-
-	var slidesTimedObj = getTimingsArr(allEntriesArr);
-
-	console.log('slidesTimedObj ',slidesTimedObj)
-
-
-	addDegreeView(allDegreesObj);
-
-
-	addSlidesView(slidesTimedObj);
-
-
-	scrollDraw();
-
 
 	initView(allEntriesArr);
 
@@ -126,12 +141,14 @@ function getTimingsArr(a){
 
 	for (var i = 0; i < a.length; i++){
 
-		if ( i > 0 && a[i].imgTransReq ){
+		if ( i > 0 && a[i].imgTransReq || a[i].introTransReq ){
 			var o = { }
 
 			o.key = a[i].key;
 			o.imageRef = a[i].imageRef;
 			o.statSlideReq = a[i].statSlideReq;
+			o.introTransReq = a[i].introTransReq;
+			o.bColor = a[i].bColor;
 			o.imgT1 = a[i].timeOne;
 			o.imgT2 = a[i].timeTwo;
 
@@ -166,7 +183,6 @@ function addDegreeView(degreesObj){
 
 	var tpl = degreeHTML;
 	var tplOp = Mustache.to_html(tpl, degreesObj);
-	console.log(tplOp)
 
 	var tgtEl = document.querySelector('.gv-big-type-panel');
 	tgtEl.innerHTML = tplOp;
@@ -308,10 +324,8 @@ function initDesktop(allEntriesArr){
 		        slides: allEntriesArr 
 		    };
 
-
-
-		addInfoView(slidesData);
-
+	
+	addInfoView(slidesData);
 
 		
 	if( w >= h ){
@@ -335,11 +349,19 @@ function initDesktop(allEntriesArr){
 	}
 
 
-					
-			
-			//initDesktop(allEntriesArr);
+	var allDegreesObj = getDegreeSlidesArr(allEntriesArr)	
 
-	
+	var slidesTimedObj = getTimingsArr(allEntriesArr);
+
+
+	addDegreeView(allDegreesObj);
+
+
+	addSlidesView(slidesTimedObj);
+
+
+	scrollDraw();
+
 		
 }
 
@@ -374,6 +396,67 @@ function addInfoView(slidesData){
 }
 
 
+
+
+
+
+
+
+// Instantiate CarNav, Draggables, Promote and share panels.
+				
+// $('.promote-panel').each(function(){ new PromoteLinks(this); });
+// $('.photo-mask-wrap').each(function(){ new DragReveal(this); });
+
+function initMobile(a){
+	if(isAndroidApp()){
+        androidSpacer.style.height = '2000px';
+        setTimeout(function(){
+        	windowHeight = window.innerHeight;
+        	console.log(windowHeight, androidSpacer)
+            startMobile();
+            androidSpacer.style.height = `${windowHeight}px`;            
+        },60)
+    } else {
+       // startMobile(a);
+    }
+
+	
+}
+
+
+function startMobile(a){
+
+	var w = windowWidth;
+	var h = windowHeight;
+	var sizeBase = (w >= h) ? w : h;
+	var size = sizeBase * 1;
+	var divHeight = h * slides.length;
+
+	wrapper.style.height = divHeight + 'px';
+	container.style.height = size + 'px';
+	container.classList.add('gv-desktop');
+
+	wrapper.style.height = windowHeight + 'px';
+	container.classList.add('gv-mobile');	
+
+	var slidesData = {
+		        slides: a 
+		    };
+
+	addMobileSlidesView(slidesData);
+
+
+}
+
+function addMobileSlidesView(slidesData){
+	console.log('MOBILEslidesData',slidesData)
+
+	var tpl = mobileSlides;
+	var tplOp = Mustache.to_html(tpl, slidesData);
+	var tgtEl = document.querySelector('.gv-slides-container');
+
+	tgtEl.innerHTML = tplOp;
+}
 
 function scrollDraw() {
     // Get a reference to the <path>
@@ -416,38 +499,6 @@ function scrollDraw() {
 		  }
 		  
 		});
-}
-
-
-
-
-// Instantiate CarNav, Draggables, Promote and share panels.
-				
-// $('.promote-panel').each(function(){ new PromoteLinks(this); });
-// $('.photo-mask-wrap').each(function(){ new DragReveal(this); });
-
-function initMobile(initMobile){
-	if(isAndroidApp()){
-        androidSpacer.style.height = '2000px';
-        setTimeout(function(){
-        	windowHeight = window.innerHeight;
-        	console.log(windowHeight, androidSpacer)
-            startMobile();
-            androidSpacer.style.height = `${windowHeight}px`;            
-        },60)
-    } else {
-        startMobile();
-    }
-
-	
-}
-
-
-
-
-function startMobile(){
-	wrapper.style.height = windowHeight + 'px';
-	container.classList.add('gv-mobile');	
 }
 
 init();

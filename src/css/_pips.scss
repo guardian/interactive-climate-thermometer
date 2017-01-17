@@ -1,0 +1,169 @@
+/*---------------------------------
+ *
+ *   pips Navigation
+ *
+ *-------------------------------*/
+
+
+.pips-nav {
+    width: 60px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    z-index: 2;
+}
+.pips-nav ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+}
+.pips-nav li {
+    height: 23px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+}
+.pips-nav li:hover {
+    z-index: 2;
+    cursor: pointer;
+}
+.pips-nav li.current:hover {
+    cursor: default;
+}
+.pips-nav a {
+    width: 0px;
+    height: 0px;
+    border: 6px solid rgb(255,255,255);
+	opacity: 0.75;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+    font: 0/0 a;
+    border-radius: 50%;
+    background: #fff;
+    color: #eee;
+    text-decoration: none;
+    font: 0/0 a;
+	outline: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.pips-nav .car-thumb {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -5px;
+    margin-right: -2px;
+    z-index: 1;
+    background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+    overflow: hidden;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.2s ease-out 0s;
+    -moz-transition: all 0.2s ease-out 0s;
+    -o-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+}
+.pips-nav li:hover a {
+    width: 8px;
+    height: 8px;
+	top: -4px;
+	left: 0px;
+	opacity: 1;
+    background: transparent;
+}
+.pips-nav li:hover .car-thumb {
+    width: 133px;
+    height: 133px;
+    right: 36px;
+    margin-top: -67px;
+    cursor: pointer;
+	-webkit-transition-delay: 0.2s;
+	-moz-transition-delay: 0.2s;
+	-o-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+
+
+
+.pips-nav .c1:hover a { border-color: rgb(105,62,62); }
+.pips-nav .c2:hover a { border-color: rgb(107,196,202); }
+.pips-nav .c3:hover a { border-color: rgb(51,60,77); }
+.pips-nav .c4:hover a { border-color: rgb(11,243,151); }
+.pips-nav .c5:hover a { border-color: rgb(48,34,49); }
+.pips-nav .c6:hover a { border-color: rgb(182,93,135); }
+.pips-nav .c7:hover a { border-color: rgb(56,40,44); }
+.pips-nav .c8:hover a { border-color: rgb(244,214,13); }
+.pips-nav .c9:hover a { border-color: rgb(42,43,57); }
+.pips-nav .c10:hover a { border-color: rgb(81,122,192); }
+.pips-nav .c11:hover a { border-color: rgb(223,199,195); }
+.pips-nav .c12:hover a { border-color: rgb(140,104,114); }
+.pips-nav .c13:hover a { border-color: rgb(255,210,77); }
+.pips-nav .c14:hover a { border-color: rgb(22,31,46); }
+.pips-nav .c15:hover a { border-color: rgb(189,144,198); }
+.pips-nav .c16:hover a { border-color: rgb(100,63,76); }
+.pips-nav .c17:hover a { border-color: rgb(32,32,47); }
+.pips-nav .c18:hover a { border-color: rgb(227,203,195); }
+.pips-nav .c19:hover a { border-color: rgb(224,87,67); }
+.pips-nav .c20:hover a { border-color: rgb(214,192,185); }
+.pips-nav .c21:hover a { border-color: rgb(117,42,155); }
+.pips-nav .c22:hover a { border-color: rgb(76,227,145); }
+.pips-nav .c23:hover a { border-color: rgb(54,41,32); }
+.pips-nav .c24:hover a { border-color: rgb(228,226,198); }
+.pips-nav .c25:hover a { border-color: rgb(66,217,135); }
+
+/* current <a> selection */
+.pips-nav li.current a {
+    width: 8px;
+    height: 8px;
+	top: -4px;
+    background: transparent;
+	opacity: 1;
+    cursor: default;
+    border-color: yellow;
+}
+.pips-nav li.current span {
+    display: none !important;
+}
+
+.pips-nav .c1.current a { border-color: rgb(107,196,202); }
+.pips-nav .c2.current a { border-color: rgb(51,60,77); }
+.pips-nav .c3.current a { border-color: rgb(11,243,151); }
+.pips-nav .c4.current a { border-color: rgb(48,34,49); }
+.pips-nav .c5.current a { border-color: rgb(148,75,110); }
+.pips-nav .c6.current a { border-color: rgb(56,40,44); }
+.pips-nav .c7.current a { border-color: rgb(244,214,13); }
+.pips-nav .c8.current a { border-color: rgb(42,43,57); }
+.pips-nav .c9.current a { border-color: rgb(81,122,192); }
+.pips-nav .c10.current a { border-color: rgb(223,199,195); }
+.pips-nav .c11.current a { border-color: rgb(140,104,114); }
+.pips-nav .c12.current a { border-color: rgb(255,210,77); }
+.pips-nav .c13.current a { border-color: rgb(22,31,46); }
+.pips-nav .c14.current a { border-color: rgb(189,144,198); }
+.pips-nav .c15.current a { border-color: rgb(100,63,76); }
+.pips-nav .c16.current a { border-color: rgb(32,32,47); }
+.pips-nav .c17.current a { border-color: rgb(227,203,195); }
+.pips-nav .c18.current a { border-color: rgb(224,87,67); }
+.pips-nav .c19.current a { border-color: rgb(214,192,185); }
+.pips-nav .c20.current a { border-color: rgb(117,42,155); }
+.pips-nav .c21.current a { border-color: rgb(76,227,145); }
+.pips-nav .c22.current a { border-color: rgb(54,41,32); }
+.pips-nav .c23.current a { border-color: rgb(228,226,198); }
+.pips-nav .c24.current a { border-color: rgb(53,144,201); }
+.pips-nav .c25.current a { border-color: rgb(54,41,32); }
+
+
+
+
+

@@ -7,6 +7,7 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
+
 	}
 
 	.l-header {
@@ -21,11 +22,12 @@
 
 	.gv-slides-container {
 		background: #efefec;
+		background: rgba(red,0.25);
+				overflow-y: scroll !important;
 	}
 
 	.gv-mobile {
-		 -moz-transition: all 1s ease-in;
-
+		-moz-transition: all 1s ease-in;
 	    -webkit-transition: background-color 1000ms linear;
         -moz-transition: background-color 1000ms linear;
         -o-transition: background-color 1000ms linear;
@@ -34,6 +36,9 @@
 	}
 
 	.gv-slide {
+		position:relative;
+		float:left;
+		
 		width: 100%;
 		height: 100%;
 

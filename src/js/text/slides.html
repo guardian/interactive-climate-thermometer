@@ -1,14 +1,34 @@
 {{#slides}}
 
+	
+
+
 		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
-			
-		
-						
+				
 						{{#statSlideReq}}
 						
 						{{/statSlideReq}}
 						{{^statSlideReq}}
-								
+
+						{{#introTransReq}}		
+							<div class="gv-slide-image-holder">	
+								<div class='gv-slide-content' 
+									data-{{imgT1}}="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+									data-{{imgT2}}= "opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;"
+									data-{{imgT3}}= "opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+									data-{{imgT4}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;" 
+									>
+
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #eb3212 0%, #eb3212 100% ), url("<%= path %>/assets/opt/{{imageRef}}.png")'
+											data-{{imgT1}}="margin-top:100px" 
+											data-{{imgT2}}= "margin-top:0px"
+											data-{{imgT3}}= "margin-top:0px" 
+											data-{{imgT4}}="margin-top:-100px"></div>
+								</div>
+						{{/introTransReq}}
+
+						{{/statSlideReq}}
+						{{^introTransReq}}
 							<div class="gv-slide-image-holder">	
 								<div class='gv-slide-content' 
 									data-{{imgT1}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;" 
@@ -17,15 +37,14 @@
 									data-{{imgT4}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;" 
 									>
 
-										<div class='slide-image' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png")'
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #f97500 0%, #f97500 100% ), url("<%= path %>/assets/opt/{{imageRef}}.png")'
 											data-{{imgT1}}="margin-top:100px" 
 											data-{{imgT2}}= "margin-top:0px"
 											data-{{imgT3}}= "margin-top:0px" 
 											data-{{imgT4}}="margin-top:-100px"></div>
 								</div>
 
-
-						{{/statSlideReq}}
+						{{/introTransReq}}
 
 					</div>	
 

@@ -10,7 +10,7 @@
 			<h2 data-{{timeOne}}="opacity:0; margin-top:-20px;" 
 				data-{{timeTwo}}="opacity:1; margin-top:0px;" 
 				data-{{timeThree}}="opacity:1; margin-top:0px;" 
-				data-{{timeFour}}="opacity:1; margin-top:100px;">Stat slide header</h2>
+				data-{{timeFour}}="opacity:1; margin-top:100px;">Temperature rises more than {{slideRef}}C…</h2>
 			{{#sentenceArr}}
 			<p class='gv-info-text-stat'  
 				data-{{t1}}="opacity:0;" 
@@ -24,27 +24,51 @@
 		{{/statSlideReq}}
 
 		{{^statSlideReq}}
-			<div class="gv-info-panel"
-				data-{{timeOne}}="opacity:0;" 
-				data-{{timeTwo}}="opacity:1;" 
-				data-{{timeThree}}="opacity:1;" 
-				data-{{timeFour}}="opacity:0;">
-			<h2 data-{{timeOne}}="opacity:0; margin-top:-20px;" 
-				data-{{timeTwo}}="opacity:1; margin-top:0px;" 
-				data-{{timeThree}}="opacity:1; margin-top:0px;" 
-				data-{{timeFour}}="opacity:1; margin-top:100px;" >Heading to appear here for {{slideRef}}C…</h2>
-			{{#sentenceArr}}
-				<p class='gv-info-text'  
-				data-{{t1}}="opacity:0;" 
-				data-{{t2}}="opacity:1;" 
-				data-{{t3}}="opacity:1;" 
-				data-{{t4}}="opacity:0;">{{sentence}}</p>
-			{{/sentenceArr}}
 			
-		</div>	
-		{{/statSlideReq}}		
-		
+			
 
+				{{#introTextReq}}
+						<div class="gv-info-panel gv-intro-panel"
+										data-{{timeOne}}="opacity:0;" 
+										data-{{timeTwo}}="opacity:1;" 
+										data-{{timeThree}}="opacity:1;" 
+										data-{{timeFour}}="opacity:0;">
+									
+									{{#sentenceArr}}
+										<p class='gv-info-text  gv-info-text-intro'  
+										data-{{t1}}="opacity:0;" 
+										data-{{t2}}="opacity:1;" 
+										data-{{t3}}="opacity:1;" 
+										data-{{t4}}="opacity:0;">{{sentence}}</p>
+									{{/sentenceArr}}
+									
+						</div>	
+
+				{{/introTextReq}}	
+						
+				{{^introTextReq}}
+						<div class="gv-info-panel "
+										data-{{timeOne}}="opacity:0;" 
+										data-{{timeTwo}}="opacity:1;" 
+										data-{{timeThree}}="opacity:1;" 
+										data-{{timeFour}}="opacity:0;">
+									<h2 data-{{timeOne}}="opacity:0; margin-top:0;" 
+										data-{{timeTwo}}="opacity:1; margin-top:0px;" 
+										data-{{timeThree}}="opacity:1; margin-top:0px;" 
+										data-{{timeFour}}="opacity:1; margin-top:0px;" >Temperature rises more than {{slideRef}}C…</h2>
+									{{#sentenceArr}}
+										<p class='gv-info-text'  
+										data-{{t1}}="opacity:0;" 
+										data-{{t2}}="opacity:1;" 
+										data-{{t3}}="opacity:1;" 
+										data-{{t4}}="opacity:0;">{{sentence}}</p>
+									{{/sentenceArr}}
+									
+						</div>	
+
+				{{/introTextReq}}
+
+		{{/statSlideReq}}
 
 {{/slides}}
 
