@@ -24,7 +24,7 @@ $degRange: 2deg;
 
 .is-immersive-interactive{   
     // display: none;
-	background:linear-gradient($color1 0%, $color2 10%,  $color3 30%, $color4 50%, $color5 70%, $color6 80%, $color7 90%);
+	// background:linear-gradient($color1 0%, $color2 10%,  $color3 30%, $color4 50%, $color5 70%, $color6 80%, $color7 90%);
     // background:rgba($color1, 0.25);
     background-repeat: none;
     overflow-y: hidden;
@@ -32,6 +32,34 @@ $degRange: 2deg;
 
 
 
+}
+
+.gv-gradient-bg{
+
+    background:linear-gradient($color1 0%, $color2 10%,  $color3 30%, $color4 50%, $color5 70%, $color6 80%, $color7 90%);
+    
+    // background: linear-gradient(0deg, #fb8200, #f97500, #f66500, #f25600, #f04903, #eb3212, #222222);
+    // background-size: 700% 400%;
+
+    // -webkit-animation: aniOne 30s ease forwards;
+    // -moz-animation: aniOne 30s ease forwards;
+    // animation: aniOne 30s ease forwards;
+
+    // @-webkit-keyframes aniOne {
+    //     0%{background-position:0% 50%}
+    //     50%{background-position:100% 50%}
+    //     100%{background-position:0% 50%}
+    // }
+    // @-moz-keyframes aniOne {
+    //     0%{background-position:0% 50%}
+    //     50%{background-position:100% 50%}
+    //     100%{background-position:0% 50%}
+    // }
+    // @keyframes aniOne { 
+    //     0%{background-position:0% 50%}
+    //     50%{background-position:100% 50%}
+    //     100%{background-position:0% 50%}
+    // }
 }
 
 .element-atom,
@@ -114,10 +142,10 @@ $degRange: 2deg;
     }
 
     @include mq($from: mobile, $until: desktop) {
-                position: relative;
-                width: 90%;
+                position: absolute;
+                width: calc(100% -20px);
                 margin: 0 10px;
-                top: calc(100% - 60px);
+                bottom: 0;
             }
 
     @include mq($from: desktop) {
@@ -146,7 +174,7 @@ $degRange: 2deg;
 }
 
 .gv-info-text-intro{
-    @include fs-headline(9);
+    @include fs-headline(7);
     font-weight: 200;
     padding: 0 0 6px 0;
     margin:  0 0 6px 6px;
@@ -155,24 +183,34 @@ $degRange: 2deg;
 }
 
 .gv-info-text-stat{
+    top: 0;
+    padding: 0 0 6px 0;
+    margin:  0 0 6px 6px;
     color: $mainTextColor;
 
-    @include mq($from: mobile, $until: desktop) {
-                 @include fs-headline(3);
-            }
+    border-bottom: 1px dotted #FFF;
 
-    @include mq($from: desktop) {
-         @include fs-headline(4);
-    }
+        @include mq($from: mobile, $until: desktop) {
+                     @include fs-headline(3);
+                }
 
-   
+        @include mq($from: desktop) {
+             @include fs-headline(4);
+        }
+
     font-weight:900;
-    border-top: 1px dotted #FFF;
-    padding: 6px 0;
+    
+    
 
-    margin: 6px 0 0  6px;
+    
+
+}
+
+.gv-info-source-text{
+    margin: 0 0 0 6px;
     top: 0;
-
+    @include fs-textSans(3);
+    padding: 3px 0;
 }
 
 .gv-scroll-arrow-down {
@@ -183,6 +221,9 @@ $degRange: 2deg;
 	    margin-right: auto;
 
 	    clear: both;
+        svg {
+            stroke:1.5;
+        }
 }
 
 

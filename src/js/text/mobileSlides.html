@@ -1,38 +1,38 @@
 {{#slides}}
 
-		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
+		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}' style="background: linear-gradient({{color1}} 0%, {{color2}} 100%) ">
 			
 		
 						
-						{{#statSlideReq}}
+						<!-- {{#statSlideReq}}
 						
 						{{/statSlideReq}}
-						{{^statSlideReq}}
+						{{^statSlideReq}} -->
 								
 							<div class="gv-slide-image-holder">	
 								<div class='gv-slide-content'>
 
-										<div class='slide-image' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png")'></div>
+										<div class='slide-image-mobile' id='slide-img-{{key}}' style ='background-image:url("<%= path %>/assets/opt/{{imageRef}}.png");'></div>
 								</div>
 
 
-						{{/statSlideReq}}
+						<!-- {{/statSlideReq}} -->
 
 							</div>	
 
-
+<!-- <div class='gv-thermometer'></div>	 -->	
 
 							{{#statSlideReq}}
-								 <div class="gv-info-panel">Stat slide header</h2>
+								<!--  <div class="gv-info-panel">
 									{{#sentenceArr}}
 									<p class='gv-info-text-stat'>{{sentence}}</p>
 									{{/sentenceArr}}
-									<div class='gv-thermometer'></div>		
 									
-								</div>	
-								{{/statSlideReq}}
+									
+								</div> -->	
+							{{/statSlideReq}}
 
-								{{^statSlideReq}}
+							{{^statSlideReq}}
 									<div class="gv-info-panel">
 									<h2 >Temperature rises more than {{slideRef}}C…</h2>
 									{{#sentenceArr}}
@@ -40,7 +40,7 @@
 									{{/sentenceArr}}
 									
 								</div>	
-								{{/statSlideReq}}	
+							{{/statSlideReq}}	
 
 
 						</div>

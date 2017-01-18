@@ -12,7 +12,7 @@
 				data-{{timeThree}}="opacity:1; margin-top:0px;" 
 				data-{{timeFour}}="opacity:1; margin-top:100px;">Temperature rises more than {{slideRef}}C…</h2> -->
 			{{#sentenceArr}}
-			<p class='gv-info-text-stat'  
+			<p class='{{#containsSource}}gv-info-source-text{{/containsSource}}{{^containsSource}}gv-info-text-stat{{/containsSource}}'  
 				data-{{t1}}="opacity:0;" 
 				data-{{t2}}="opacity:1;" 
 				data-{{t3}}="opacity:1;" 
@@ -29,17 +29,13 @@
 
 				{{#introTextReq}}
 						<div class="gv-info-panel gv-intro-panel"
-										data-{{timeOne}}="opacity:0;" 
+										data-{{timeOne}}="opacity:1;" 
 										data-{{timeTwo}}="opacity:1;" 
 										data-{{timeThree}}="opacity:1;" 
 										data-{{timeFour}}="opacity:0;">
 									
 									{{#sentenceArr}}
-										<p class='gv-info-text  gv-info-text-intro'  
-										data-{{t1}}="opacity:0;" 
-										data-{{t2}}="opacity:1;" 
-										data-{{t3}}="opacity:1;" 
-										data-{{t4}}="opacity:0;">{{sentence}}</p>
+										<p class='gv-info-text gv-info-text-intro'>{{sentence}}</p>
 									{{/sentenceArr}}
 									
 						</div>	

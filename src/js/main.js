@@ -1,7 +1,6 @@
 import Mustache from 'mustache';
 import xr from 'xr';
 
-
 import slidesHTML from './text/slides.html';
 import infoHTML from './text/infoPanel.html';
 import mobileSlides from './text/mobileSlides.html';
@@ -13,14 +12,13 @@ import degreeHTML from './text/degreePanel.html';
 import { isMobile, isAndroidApp, splitString } from './utils';
 
 
-
-
 var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
 
 var androidSpacer = document.querySelector('.android-app-spacer');
 var wrapper = document.querySelector('.gv-wrapper');
 var container = document.querySelector('.gv-slides-container');
+var atomContainer = document.querySelector('.is-immersive-interactive');
 var slides = document.querySelectorAll('.gv-slide');
 var panels = document.querySelectorAll('.gv-info-panel');
 
@@ -31,8 +29,7 @@ var transTimeUnit = transTime/transScaleLength;
 var colorsArr = [ '#fb8200', '#f97500','#f66500', '#f25600', '#f04903', '#eb3212' ];
 
 
-
-
+console.log(atomContainer)
 
 
 function init(){
@@ -52,82 +49,50 @@ function init(){
 
 function initData(dataBase){
 
-	
-
 	var allEntriesArr = [];
 
 	var splitList = ["\n"];
 
 
-	for(var k =0; k<dataBase.length -1; k++){
+			for(var k =0; k<dataBase.length -1; k++){
 
-      		// "slides": "",
-		    // "slideRef": "2",
-		    // "imageRef": "stats",
-		    // "image": "stats slide",
-		    // "sentences": "1.5 billion people exposed to heatwaves each year.\n30 million people affected by flooding each year.\n1.5 billion people exposed to increased water stress.",
-		    // "": ""
+				    if (dataBase[k].slideRef){
 
-		    if (dataBase[k].slideRef){
+				    		var slideObj = {};
+				    		slideObj.slideRef = dataBase[k].slideRef;
 
-		    		var slideObj = {};
-		    		slideObj.slideRef = dataBase[k].slideRef;
+				    		slideObj.imageRef = dataBase[k].imageRef;
+				    		slideObj.bColor = colorsArr[slideObj.slideRef];
+				    		slideObj.para = dataBase[k].sentences;
+				    		slideObj.sentences = splitString(dataBase[k].sentences, splitList);
 
+				    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
+				    		slideObj.key = k;
 
-		    		slideObj.imageRef = dataBase[k].imageRef;
-		    		slideObj.bColor = colorsArr[slideObj.slideRef];
-		    		slideObj.para = dataBase[k].sentences;
-		    		slideObj.sentences = splitString(dataBase[k].sentences, splitList);
+				    		slideObj.timeOne = k * transTime; 
+				    		slideObj.timeTwo = slideObj.timeOne + transTimeUnit;
+				    		slideObj.timeFour = (k+1) * transTime; 
+				    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
 
-		    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
-		    		slideObj.key = k;
+				    		slideObj.color1 = colorsArr[slideObj.slideRef];
+				    		slideObj.color2 = colorsArr[colorsArr.length-1];	    		 
 
-		    		slideObj.timeOne = k * transTime; 
-		    		slideObj.timeTwo = slideObj.timeOne + transTimeUnit;
-		    		slideObj.timeFour = (k+1) * transTime; 
-		    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
+				    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
 
-		    		slideObj.color1 = colorsArr[k];
-		    		slideObj.color2 = colorsArr[colorsArr.length-1];
+				    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
 
-		    		// slideObj.imgT1 = k * transTime; 
-		    		// slideObj.imgT2 = slideObj.imgT1 + transTimeUnit;
-		    		// slideObj.imgT4 = (k+1) * transTime;
-		    		// slideObj.imgT3 = slideObj.imgT4 - transTimeUnit;
-		    		
+				    		k > 0 && slideObj.imageRef == dataBase[k-1].imageRef ? slideObj.imgTransReq = false :  slideObj.imgTransReq = true; 
 
-		    		// slideObj.maskT1 = k * transTime; 
-		    		// slideObj.maskT2 = slideObj.maskT1 + transTimeUnit;
-		    		// slideObj.maskT4 = (k+1) * transTime;
-		    		// slideObj.maskT3 = slideObj.maskT4 - transTimeUnit;
-		    		 
+				    		k == 0 ? slideObj.introTransReq = true : slideObj.introTransReq = false;  
 
-		    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
+				    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
 
-		    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
+				    		slideObj.slideRef ==  1 ? slideObj.introTextReq = true :  slideObj.introTextReq = false; 
 
-		    		k > 0 && slideObj.imageRef == dataBase[k-1].imageRef ? slideObj.imgTransReq = false :  slideObj.imgTransReq = true; 
-
-		    		k == 0 ? slideObj.introTransReq = true : slideObj.introTransReq = false;  
-
-		    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
-
-		    		slideObj.slideRef ==  1 ? slideObj.introTextReq = true :  slideObj.introTextReq = false; 
-
-
-		    		console.log(slideObj)
-
-		    		// for (var i = 0; i < slideObj.sentenceArr.length){
-
-
-
-		    		// }
-
-
-		    		allEntriesArr.push(slideObj);
-					
-				}
-		    }
+				    		allEntriesArr.push(slideObj);
+							
+						}
+				    }
 
 
 	initView(allEntriesArr);
@@ -139,32 +104,29 @@ function getTimingsArr(a){
 
 	var lastObj = a[a.length-1];
 
-	for (var i = 0; i < a.length; i++){
+		for (var i = 0; i < a.length; i++){
 
-		if ( i > 0 && a[i].imgTransReq || a[i].introTransReq ){
-			var o = { }
+			if ( i > 0 && a[i].imgTransReq || a[i].introTransReq ){
+				var o = { }
 
-			o.key = a[i].key;
-			o.imageRef = a[i].imageRef;
-			o.statSlideReq = a[i].statSlideReq;
-			o.introTransReq = a[i].introTransReq;
-			o.bColor = a[i].bColor;
-			o.imgT1 = a[i].timeOne;
-			o.imgT2 = a[i].timeTwo;
+				o.key = a[i].key;
+				o.imageRef = a[i].imageRef;
+				o.statSlideReq = a[i].statSlideReq;
+				o.introTransReq = a[i].introTransReq;
+				o.bColor = a[i].bColor;
+				o.imgT1 = a[i].timeOne;
+				o.imgT2 = a[i].timeTwo;
 
+				markersArr.push(o)
 
-			markersArr.push(o)
-
-
-		}
+			}
 	}
 
 	for (var i = 0; i < markersArr.length; i++){
-		if (markersArr[i+1]){
 
+		if (markersArr[i+1]){
 			markersArr[i].imgT3 = markersArr[i+1].imgT1 - transTimeUnit;
 			markersArr[i].imgT4 = markersArr[i+1].imgT1;
-
 		}
 
 	}
@@ -213,8 +175,6 @@ function getDegreeSlidesArr(a){
 
 	for (var i = 0; i < markersArr.length; i++){
 		if (markersArr[i+1]){
-
-
 			markersArr[i].t3 = markersArr[i+1].t1 - transTimeUnit;
 			markersArr[i].t4 = markersArr[i+1].t1;
 			// markersArr[i].t3 = a[markersArr[i+1].key - 1].timeThree;
@@ -222,7 +182,6 @@ function getDegreeSlidesArr(a){
 		}
 
 		// else if (!markersArr[i+1]){
-
 
 		// 	markersArr[i].t3 = markersArr[i].t1 + 6000;
 		// 	markersArr[i].t4 = markersArr[i+1].t1 + 6000;
@@ -255,19 +214,17 @@ function getSentenceArr(a, time){
 			var stepTime = i * tempStep;
 
 				o.sentence = a[i];
+				o.containsSource = checkForSource(o.sentence)
 				o.key = i;
 				o.t1 =  time + stepTime ;
-				o.t2 =  time + stepTime +  (transTimeUnit * 2);
-				o.t3 =  time + stepTime +  (transTimeUnit * 3);
-				o.t4 =  time + stepTime +  (transTimeUnit * 3.5);
+				o.t2 =  time + stepTime +  (transTimeUnit);
+				o.t3 =  time + stepTime +  (transTimeUnit * 2);
+				o.t4 =  time + stepTime +  (transTimeUnit * 2.5);
 			
 			t.push(o)
 		}
 
-		// for (var i = 0; i < t.length; i++){
 
-
-		// }
 
 		if (t.length > 1){
 			var endT = t[t.length-1].t4;
@@ -281,9 +238,6 @@ function getSentenceArr(a, time){
 		}
 		// var endT = t[t.length-1].t4;
 		// var preEndT = t[t.length-1].t3;
-
-			
-
 	
 	return t;
 }
@@ -299,6 +253,7 @@ function initView(allEntriesArr){
 			loadApp('app.js');
 		}
 }
+
 
 function loadApp(file){
 	var el = document.createElement('script');
@@ -323,9 +278,8 @@ function initDesktop(allEntriesArr){
 	var slidesData = {
 		        slides: allEntriesArr 
 		    };
-
 	
-	addInfoView(slidesData);
+		addInfoView(slidesData);
 
 		
 	if( w >= h ){
@@ -362,6 +316,9 @@ function initDesktop(allEntriesArr){
 
 	scrollDraw();
 
+
+	atomContainer.classList.add('gv-gradient-bg');
+
 		
 }
 
@@ -374,10 +331,6 @@ function positionEls(h){
 	}
 
 }
-
-
-
-
 
 function addSlidesView(slidesData){
 	var tpl = slidesHTML;
@@ -417,10 +370,8 @@ function initMobile(a){
             androidSpacer.style.height = `${windowHeight}px`;            
         },60)
     } else {
-       // startMobile(a);
+       startMobile(a);
     }
-
-	
 }
 
 
@@ -432,11 +383,9 @@ function startMobile(a){
 	var size = sizeBase * 1;
 	var divHeight = h * slides.length;
 
-	wrapper.style.height = divHeight + 'px';
-	container.style.height = size + 'px';
-	container.classList.add('gv-desktop');
 
 	wrapper.style.height = windowHeight + 'px';
+	container.style.height = size + 'px';
 	container.classList.add('gv-mobile');	
 
 	var slidesData = {
@@ -445,18 +394,33 @@ function startMobile(a){
 
 	addMobileSlidesView(slidesData);
 
-
+		// scrollDraw();
 }
 
 function addMobileSlidesView(slidesData){
-	console.log('MOBILEslidesData',slidesData)
+
+	console.log(slidesData)
 
 	var tpl = mobileSlides;
 	var tplOp = Mustache.to_html(tpl, slidesData);
 	var tgtEl = document.querySelector('.gv-slides-container');
 
+console.log('MOBILEslidesData',tplOp)
+
+
 	tgtEl.innerHTML = tplOp;
 }
+
+
+
+function checkForSource(s){
+	var string = s,
+    substring = "(source";
+    var bool = 	string.includes(substring)
+
+	return bool;
+}
+
 
 function scrollDraw() {
     // Get a reference to the <path>
