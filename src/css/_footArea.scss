@@ -1,0 +1,69 @@
+.gv-down-arrow-holder{
+      position:relative;
+      width:100%;
+      max-width:1300px;
+      
+}
+
+.gv-down-arrow{
+      position:absolute;
+      left:0;
+      margin-left:204px;
+      bottom:9px;
+      width:80px;
+      height:80px;
+       svg{
+        stroke-width: 1.5px;
+        stroke-opacity: 0.75 !important;
+        // transform: scale(0.75, 0.75);
+     }
+}  
+
+
+
+.gv-thermometer{
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        bottom: 24px;
+        left: 0;
+        margin: 0 0 0 300px;
+     svg{
+        stroke-width: 2px;
+        stroke-opacity: 0.75;
+        // transform: scale(0.75, 0.75);
+     }
+
+
+
+    // @include mq($from: mobile, $until: desktop) {
+    //             height:80px;
+    //             width:30px;
+
+    //         }
+
+
+    // @include mq($from: desktop) {
+    //     height:120px;
+    //     width:30px;
+    // }
+}
+
+
+
+
+
+
+.app-footer {
+    width: 100%;
+    max-width: 1300px;
+    height: 312px;
+    position: fixed;
+    bottom: 0;
+
+    z-index: 3;
+    overflow: hidden;
+    // border-top: 1px solid #fff;
+    color: #fff;
+}
+

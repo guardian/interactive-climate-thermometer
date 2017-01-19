@@ -3,6 +3,7 @@
 @import "swiper";
 @import "mobile";
 @import "degreeType";
+@import "footArea";
 @import "desktop";
 
 $mainTextColor: #FFF;
@@ -118,7 +119,7 @@ $degRange: 2deg;
 
 //last slide
 .gv-slide:last-of-type .gv-slide-content{
-	background: #333;
+	background-color: none;
 }
 
 .gv-info-panel {
@@ -213,33 +214,7 @@ $degRange: 2deg;
     padding: 3px 0;
 }
 
-.gv-scroll-arrow-down {
-		position: relative;
-	    height: 140px;
-	    width: 140px;
-	    margin-left: auto;
-	    margin-right: auto;
 
-	    clear: both;
-        svg {
-            stroke:1.5;
-        }
-}
-
-
-
-.app-footer {
-    width: 100%;
-    max-width: 1300px;
-    height: 312px;
-    position: fixed;
-    bottom: 0;
-
-    z-index: 3;
-    overflow: hidden;
-    // border-top: 1px solid #fff;
-    color: #fff;
-}
 
 .gv-info-panel-holder, .gv-big-type-panel{
     width: 100%;

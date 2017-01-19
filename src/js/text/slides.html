@@ -1,8 +1,24 @@
 {{#slides}}
 
+	{{^statSlideReq}}
 		<div class='gv-slide swiper-slide'  id='gvSwiperSlide_{{key}}'>
 				
 						
+				{{#outroTransReq}}		
+							<div class="gv-slide-image-holder-intro">	
+								<div class='gv-slide-content' 
+									data-{{imgT1}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;" 
+									data-{{imgT2}}= "opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;"
+									data-{{imgT3}}= "opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+									data-{{imgT4}}="opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
+									>
+
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #fb8200 0%, #fb8200 100% ), url("<%= path %>/assets/opt/{{image}}.png") '></div>
+								</div>
+				{{/outroTransReq}}
+
+
+				{{^outroTransReq}}
 
 						{{#introTransReq}}		
 							<div class="gv-slide-image-holder-intro">	
@@ -13,7 +29,7 @@
 									data-{{imgT4}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;" 
 									>
 
-										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #fb8200 0%, #fb8200 100% ), url("<%= path %>/assets/opt/{{imageRef}}.png") '></div>
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #fb8200 0%, #fb8200 100% ), url("<%= path %>/assets/opt/{{image}}.png") '></div>
 								</div>
 						{{/introTransReq}}
 
@@ -26,16 +42,19 @@
 									data-{{imgT3}}= "opacity:1; width: 100%; height: 100%; top: 0%; left: 0%;" 
 									data-{{imgT4}}="opacity:0; width: 0%; height: 0%; top: 50%; left: 50%;">
 
-										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #f97500 0%, #f97500 100% ), url("<%= path %>/assets/opt/{{imageRef}}.png"); background-size: 750px 750px;'
-										></div>
+										<div class='slide-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #f97500 0%, #f97500 100% ), url("<%= path %>/assets/opt/{{image}}.png"); background-size: 750px 750px;'></div>
 								</div>
 
 						{{/introTransReq}}
+
+					{{/outroTransReq}}
 
 					</div>	
 
 
 		</div>
+
+		{{/statSlideReq}}
 
 
 {{/slides}}

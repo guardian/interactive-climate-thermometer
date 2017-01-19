@@ -7,6 +7,8 @@ import mobileSlides from './text/mobileSlides.html';
 
 import degreeHTML from './text/degreePanel.html';
 
+
+
 //import dataBase from './data/slideData.json';
 
 import { isMobile, isAndroidApp, splitString } from './utils';
@@ -49,12 +51,14 @@ function init(){
 
 function initData(dataBase){
 
+	console.log(dataBase)
+
 	var allEntriesArr = [];
 
 	var splitList = ["\n"];
 
 
-			for(var k =0; k<dataBase.length -1; k++){
+			for(var k =0; k<dataBase.length; k++){
 
 				    if (dataBase[k].slideRef){
 
@@ -62,11 +66,14 @@ function initData(dataBase){
 				    		slideObj.slideRef = dataBase[k].slideRef;
 
 				    		slideObj.imageRef = dataBase[k].imageRef;
+
+				    		slideObj.image = dataBase[k].imageRef;
+
 				    		slideObj.bColor = colorsArr[slideObj.slideRef];
 				    		slideObj.para = dataBase[k].sentences;
 				    		slideObj.sentences = splitString(dataBase[k].sentences, splitList);
 
-				    		slideObj.slideRef > 1 && slideObj.slideRef < 6 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
+				    		slideObj.slideRef > 1 && slideObj.slideRef < 7 ? slideObj.deg = slideObj.slideRef : slideObj.deg = 'na';
 				    		slideObj.key = k;
 
 				    		slideObj.timeOne = k * transTime; 
@@ -81,15 +88,24 @@ function initData(dataBase){
 
 				    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
 
+
 				    		k > 0 && slideObj.imageRef == dataBase[k-1].imageRef ? slideObj.imgTransReq = false :  slideObj.imgTransReq = true; 
 
 				    		k == 0 ? slideObj.introTransReq = true : slideObj.introTransReq = false;  
 
-				    		k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
+							k > 0 && slideObj.slideRef == dataBase[k-1].slideRef ? slideObj.degreeTransReq = false :  slideObj.degreeTransReq = true; 
 
-				    		slideObj.slideRef ==  1 ? slideObj.introTextReq = true :  slideObj.introTextReq = false; 
+							slideObj.slideRef == 6 ? slideObj.outroTransReq = true :  slideObj.outroTransReq = false; 
+
+				    		slideObj.slideRef ==  1  ? slideObj.introTextReq = true :  slideObj.introTextReq = false; 
+
+				    		slideObj.slideRef == 6  ? slideObj.outroTextReq = true :  slideObj.outroTextReq = false; 
+
+				    		slideObj.slideRef != 6  && slideObj.slideRef !=  1 ? slideObj.slideTextReq = true :  slideObj.slideTextReq = false; 
 
 				    		allEntriesArr.push(slideObj);
+
+				    		
 							
 						}
 				    }
@@ -109,13 +125,19 @@ function getTimingsArr(a){
 			if ( i > 0 && a[i].imgTransReq || a[i].introTransReq ){
 				var o = { }
 
-				o.key = a[i].key;
-				o.imageRef = a[i].imageRef;
-				o.statSlideReq = a[i].statSlideReq;
-				o.introTransReq = a[i].introTransReq;
-				o.bColor = a[i].bColor;
-				o.imgT1 = a[i].timeOne;
-				o.imgT2 = a[i].timeTwo;
+					o.key = a[i].key;
+					o.imageRef = a[i].imageRef;
+					o.image = a[i].image;
+					o.statSlideReq = a[i].statSlideReq;
+					o.introTransReq = a[i].introTransReq;
+					o.outroTransReq = a[i].outroTransReq;
+					o.bColor = a[i].bColor;
+					o.imgT1 = a[i].timeOne;
+					o.imgT2 = a[i].timeTwo;
+
+
+
+				o.statSlideReq ? o.holdTransReq = true :  o.holdTransReq = false;
 
 				markersArr.push(o)
 
@@ -127,7 +149,24 @@ function getTimingsArr(a){
 		if (markersArr[i+1]){
 			markersArr[i].imgT3 = markersArr[i+1].imgT1 - transTimeUnit;
 			markersArr[i].imgT4 = markersArr[i+1].imgT1;
+
+
+			
 		}
+
+	}
+
+
+	for (var i = 0; i < markersArr.length; i++){
+
+		if (markersArr[i+1] && markersArr[i+1].statSlideReq){
+			console.log('amend time here ', markersArr[i], ' to here ',markersArr[i+1])
+
+			markersArr[i].imgT3 = markersArr[i+1].imgT3;
+		 	markersArr[i].imgT4 = markersArr[i+1].imgT4;
+
+		 	console.log('AMENDED time here ', markersArr[i])
+		}	
 
 	}
 
@@ -135,6 +174,8 @@ function getTimingsArr(a){
 		        slides: markersArr 
 		    }; 
 
+
+	//console.log(imgsObj)		    
 
 	return imgsObj;
 
@@ -168,7 +209,6 @@ function getDegreeSlidesArr(a){
 			o.t2 = a[i].timeTwo;
 
 			markersArr.push(o)
-
 
 		}
 	}
@@ -216,10 +256,10 @@ function getSentenceArr(a, time){
 				o.sentence = a[i];
 				o.containsSource = checkForSource(o.sentence)
 				o.key = i;
-				o.t1 =  time + stepTime ;
-				o.t2 =  time + stepTime +  (transTimeUnit);
-				o.t3 =  time + stepTime +  (transTimeUnit * 2);
-				o.t4 =  time + stepTime +  (transTimeUnit * 2.5);
+				o.t1 =  time + stepTime;
+				o.t2 =  time + stepTime + (transTimeUnit);
+				o.t3 =  time + stepTime + (transTimeUnit * 2);
+				o.t4 =  time + stepTime + (transTimeUnit * 2.5);
 			
 			t.push(o)
 		}
@@ -399,7 +439,6 @@ function startMobile(a){
 
 function addMobileSlidesView(slidesData){
 
-	console.log(slidesData)
 
 	var tpl = mobileSlides;
 	var tplOp = Mustache.to_html(tpl, slidesData);

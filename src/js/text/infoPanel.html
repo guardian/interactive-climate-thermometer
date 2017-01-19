@@ -42,7 +42,23 @@
 
 				{{/introTextReq}}	
 						
-				{{^introTextReq}}
+				{{#outroTextReq}}
+						<div class="gv-info-panel gv-intro-panel"
+										data-{{timeOne}}="opacity:0;" 
+										data-{{timeTwo}}="opacity:1;" 
+										data-{{timeThree}}="opacity:1;" 
+										data-{{timeFour}}="opacity:1;">
+									
+									{{#sentenceArr}}
+										<p class='gv-info-text gv-info-text-intro'>{{sentence}}</p>
+									{{/sentenceArr}}
+									
+						</div>	
+
+
+				{{/outroTextReq}}
+						
+				{{#slideTextReq}}
 						<div class="gv-info-panel "
 										data-{{timeOne}}="opacity:0;" 
 										data-{{timeTwo}}="opacity:1;" 
@@ -62,7 +78,7 @@
 									
 						</div>	
 
-				{{/introTextReq}}
+				{{/slideTextReq}}
 
 		{{/statSlideReq}}
 
