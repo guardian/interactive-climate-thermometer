@@ -1,3 +1,9 @@
+import xr from 'xr';
+
+
+export var colorsArr = [ '#fb8200', '#f97500','#f66500', '#f25600', '#f04903', '#eb3212' ].reverse();
+
+
 export function isAndroidApp() {
     return /Android/i.test(navigator.userAgent);
 }
@@ -10,7 +16,6 @@ export function isMobile() {
 export function splitString(string, splitters) {
 
 
-
     var list = [string];
     
     for(var i=0; i < splitters.length; i++) {
@@ -20,6 +25,13 @@ export function splitString(string, splitters) {
     return flatten(list);
 
 }
+
+
+export function loadData(url){
+	return xr.get(url);
+}
+
+
 
 
 function traverseList(list, splitter, index) {
