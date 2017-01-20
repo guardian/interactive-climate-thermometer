@@ -11,6 +11,8 @@ var windowHeight = window.innerHeight || document.documentElement.clientHeight |
 var androidSpacer = document.querySelector('.androidSpacer');
 var wrapper = document.querySelector('.swiper-wrapper');
 
+wrapper.style.height = windowHeight + 'px';
+
 loadData("https://interactive.guim.co.uk/docsdata-test/1OuB-22W0Ll6GFSSiLtMTzI3IQnbE2cFkMpvd8Tgu8lw.json").then((resp) => {
     init(resp.data.sheets.Sheet1);
 });
@@ -18,31 +20,11 @@ loadData("https://interactive.guim.co.uk/docsdata-test/1OuB-22W0Ll6GFSSiLtMTzI3I
 
 function init(data){
     var cleanedData = cleanData(data);     
-    console.log('mobile init', cleanedData);
     initMobile(cleanedData);
 }
 
 
 function initMobile(a){
-    var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            direction: 'vertical',
-            loop: false
-
-        }) 
-        .on('onTouchStart', function (swiper, e) {
-            if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
-                window.GuardianJSInterface.registerRelatedCardsTouch(true);
-            }
-        })
-        .on('onTouchEnd', function (swiper, e) {
-            if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
-                window.GuardianJSInterface.registerRelatedCardsTouch(false);
-            }
-        });
-
 
     if(isAndroidApp()){
 
@@ -64,11 +46,6 @@ function startMobile(a){
     var sizeBase = (w >= h) ? w : h;
     var size = sizeBase * 1;
     var divHeight = h * a.length;
-    
-    wrapper.style.height = windowHeight + 'px';
-    // container.style.height = size + 'px';
-    // container.classList.add('gv-mobile');   
-
     var slidesData = {
                 slides: a 
             };
@@ -76,18 +53,58 @@ function startMobile(a){
             console.log(wrapper);
 
     addMobileSlidesView(slidesData);
-
-        // scrollDraw();
+    // scrollDraw();
 }
 
 function addMobileSlidesView(slidesData){
-    var tpl = mobileSlides;
-    var tplOp = Mustache.to_html(tpl, slidesData);
+
+    console.log(slidesData.slides)
+
+    // var tpl = mobileSlides;
+    // var tplOp = Mustache.to_html(tpl, slidesData);
     var tgtEl = document.querySelector('.swiper-wrapper');
 
-            console.log('MOBILEslidesData',tplOp)
+    
+
+    var tplOp = "";
+
+    for (var i = 0; i < slidesData.slides.length; i++){
+        var o = slidesData.slides[i]
+        var s = "<div class='swiper-slide'  id='mobileSlide_"+o.key+"' >"
+            s+= "<h1>"+o.slideRef+"</h1>";
+            s+= "<h2>"+o.key+"</h2></div>";
+            
+        tplOp += s;             
+        
+    }
 
 
+
+    console.log(tplOp)
+    
     tgtEl.innerHTML = tplOp;
+
+    addSwiper();
+}
+
+function addSwiper(){
+    var mySwiper = new Swiper ('.swiper-container', {
+            // Optional parameters
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            direction: 'vertical',
+            loop: false
+
+        }) 
+        // .on('onTouchStart', function (swiper, e) {
+        //     if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
+        //         window.GuardianJSInterface.registerRelatedCardsTouch(true);
+        //     }
+        // })
+        // .on('onTouchEnd', function (swiper, e) {
+        //     if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
+        //         window.GuardianJSInterface.registerRelatedCardsTouch(false);
+        //     }
+        // });
 }
 
