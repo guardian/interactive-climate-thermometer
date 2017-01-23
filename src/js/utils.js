@@ -1,8 +1,6 @@
 import xr from 'xr';
 
-
 export var colorsArr = [ '#fb8200', '#f97500','#f66500', '#f25600', '#f04903', '#eb3212' ].reverse();
-
 
 export function isAndroidApp() {
     return /Android/i.test(navigator.userAgent);

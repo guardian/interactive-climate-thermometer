@@ -1,13 +1,11 @@
+
+
 @media (max-width: 860px) {
-	
-	
 
 	.android-app-spacer {
 		width: 100%;
 		display: block;
 	}
-
-
 
 	.gv-thermometer{
 		display:none;
@@ -15,13 +13,13 @@
 
 	.swiper-container {
 	    width: 100%;
-	    height: auto;
+	    height: 100%;
 	} 
 
 	.swiper-slide {
 		  text-align: center;
 		  font-size: 18px;
-		  background: rgba(#fff, 0.5);
+		  //background: rgba(#fff, 0.5);
 		  /* Center slide text vertically */
 		  display: -webkit-box;
 		  display: -ms-flexbox;
@@ -37,8 +35,73 @@
 		  align-items: center;
 		}
 
+	.gv-mobile-slide{
+		margin: 0 10px;
+	}	
+
 	.app-footer, .gv-info-panel-holder, .gv-big-type-panel{
 		display: none;
 	} 
+
+	.gv-mobile-headers{
+
+		position:absolute;
+		top:12px;
+		width:100%;
+		height:30%;
+		left: 0;
+		
+		@include fs-bodyHeading(4);
+		color:#FFF;
+		text-align: left;
+
+		opacity:0.4;
+
+
+		h2{
+
+		}
+
+		h3{
+
+		}
+	}
+
+	.gv-mobile-image{
+		position:absolute;
+		top:0;
+		left:-10px;
+		width:300px;
+		height:300px;
+		border-radius: 2000px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-blend-mode: multiply;
+
+	}	
+
+	.gv-mobile-info{
+		position:absolute;
+		bottom: 0;
+		margin: 0 20px 0 0;
+
+		color:#FFF;
+		@include fs-textSans(3);
+		text-align:left;
+		list-style: none;
+
+		 @include mq($from: tablet) {
+            @include fs-headline(4);
+        }
+	
+
+
+		 li{
+		 	margin-bottom: 1rem;
+		 }
+
+	}
+
+
 
 }

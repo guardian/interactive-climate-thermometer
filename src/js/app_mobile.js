@@ -60,24 +60,9 @@ function addMobileSlidesView(slidesData){
 
     console.log(slidesData.slides)
 
-    // var tpl = mobileSlides;
-    // var tplOp = Mustache.to_html(tpl, slidesData);
+    var tpl = mobileSlides;
+    var tplOp = Mustache.to_html(tpl, slidesData);
     var tgtEl = document.querySelector('.swiper-wrapper');
-
-    
-
-    var tplOp = "";
-
-    for (var i = 0; i < slidesData.slides.length; i++){
-        var o = slidesData.slides[i]
-        var s = "<div class='swiper-slide'  id='mobileSlide_"+o.key+"' >"
-            s+= "<h1>"+o.slideRef+"</h1>";
-            s+= "<h2>"+o.key+"</h2></div>";
-            
-        tplOp += s;             
-        
-    }
-
 
 
     console.log(tplOp)
@@ -93,18 +78,24 @@ function addSwiper(){
             pagination: '.swiper-pagination',
             paginationClickable: true,
             direction: 'vertical',
-            loop: false
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            paginationClickable: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: 5000,
+            autoplayDisableOnInteraction: true
 
         }) 
-        // .on('onTouchStart', function (swiper, e) {
-        //     if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
-        //         window.GuardianJSInterface.registerRelatedCardsTouch(true);
-        //     }
-        // })
-        // .on('onTouchEnd', function (swiper, e) {
-        //     if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
-        //         window.GuardianJSInterface.registerRelatedCardsTouch(false);
-        //     }
-        // });
+        .on('onTouchStart', function (swiper, e) {
+            if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
+                window.GuardianJSInterface.registerRelatedCardsTouch(true);
+            }
+        })
+        .on('onTouchEnd', function (swiper, e) {
+            if(isAndroidApp() && window.GuardianJSInterface.registerRelatedCardsTouch){
+                window.GuardianJSInterface.registerRelatedCardsTouch(false);
+            }
+        });
 }
 

@@ -1,15 +1,20 @@
 {{#slides}}
-<!-- style="background: linear-gradient({{color1}} 0%, {{color2}} 100%) " -->
-		<div class='swiper-slide'  id='mobileSlide_{{key}}' >
+		<div class='swiper-slide gv-mobile-slide'  id='mobileSlide_{{key}}'>
+
 			
-				<h1 >{{slideRef}}C…</h1>
-				<h2>{{key}}</h2>
-					<!-- {{#sentenceArr}}
-						<p>{{sentence}}</p>
-					{{/sentenceArr}} -->
+
+			<div class='gv-mobile-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #fb8200 0%, #fb8200 100% ), url("<%= path %>/assets/opt/{{image}}.png") '></div>
+			<div class="gv-mobile-headers deg-svg-{{deg}}">			
+				
+			</div>
+
+			<ul class="gv-mobile-info">
+				{{#sentenceArr}}
+					<li>{{sentence}}</li>
+				{{/sentenceArr}}
+			</ul>	
 									
 		</div>
-
 
 {{/slides}}
 
