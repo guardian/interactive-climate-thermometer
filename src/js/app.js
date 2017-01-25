@@ -2,7 +2,7 @@ import Mustache from 'mustache';
 
 import skrollr from './skrollr';
 
-import { loadData, colorsArr} from './utils';
+import { loadData, colorsArr, scrollDraw} from './utils';
 
 import { cleanData, transTimeUnit } from './data';
 
@@ -10,6 +10,7 @@ loadData("https://interactive.guim.co.uk/docsdata-test/1OuB-22W0Ll6GFSSiLtMTzI3I
 	init(resp.data.sheets.Sheet1);
 });
 
+import desktopHTML from './text/desktop.html'
 import slidesHTML from './text/slides.html';
 import infoHTML from './text/infoPanel.html';
 import degreeHTML from './text/degreePanel.html';
@@ -87,7 +88,7 @@ function initDesktop(allEntriesArr){
 	addSlidesView(slidesTimedObj);
 
 
-	scrollDraw();
+	scrollDraw('#temperatureLine');
 
 
 	atomContainer.classList.add('gv-gradient-bg');
@@ -222,7 +223,7 @@ function getTimingsArr(a){
 			markersArr[i].imgT3 = markersArr[i+1].imgT3;
 		 	markersArr[i].imgT4 = markersArr[i+1].imgT4;
 
-		 	console.log('AMENDED time here ', markersArr[i])
+		 	//console.log('AMENDED time here ', markersArr[i])
 		}	
 
 	}
@@ -240,47 +241,5 @@ function getTimingsArr(a){
 }
 
 
-function scrollDraw() {
-    // Get a reference to the <path>
-		var path = document.querySelector('#temperatureLine');
-
-		// Get length of path... ~577px in this case
-		var pathLength = path.getTotalLength();
-
-		// Make very long dashes (the length of the path itself)
-		path.style.strokeDasharray = pathLength + ' ' + pathLength;
-
-		// Offset the dashes so the it appears hidden entirely
-		path.style.strokeDashoffset = pathLength;
-
-		// Jake Archibald says so
-		// https://jakearchibald.com/2013/animated-line-drawing-svg/
-		path.getBoundingClientRect();
-
-		// When the page scrolls...
-		window.addEventListener("scroll", function(e) {
-		 
-		  // What % down is it? 
-		  // https://stackoverflow.com/questions/2387136/cross-browser-method-to-determine-vertical-scroll-percentage-in-javascript/2387222#2387222
-		  // Had to try three or four differnet methods here. Kind of a cross-browser nightmare.
-		  var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-		    
-		  // Length to offset the dashes
-		  var drawLength = pathLength * scrollPercentage;
-		  
-		  // Draw in reverse
-		  path.style.strokeDashoffset = pathLength - drawLength;
-		    
-		  // When complete, remove the dash array, otherwise shape isn't quite sharp
-		 // Accounts for fuzzy math
-		  if (scrollPercentage >= 0.99) {
-		    path.style.strokeDasharray = "none";
-		    
-		  } else {
-		    path.style.strokeDasharray = pathLength + ' ' + pathLength;
-		  }
-		  
-		});
-}
 
 

@@ -2,10 +2,12 @@
 @import "fonts";
 @import "degreeType";
 @import "swiper";
-@import "mobile";
+
+
 
 @import "footArea";
 @import "desktop";
+@import "mobile";
 
 $mainTextColor: #FFF;
 $darkred: #800c0c;
@@ -131,7 +133,7 @@ $degRange: 2deg;
     bottom: 0;
     color: $mainTextColor;
 
-    h2{
+    h5{
         @include fs-header(5);
         top:0px;
         
@@ -163,8 +165,9 @@ $degRange: 2deg;
     top:120px;
         
     h2{
-        @include fs-headline(7);
+         @include fs-header(5);    
     }
+
 }
 
 .gv-info-text{
@@ -176,21 +179,22 @@ $degRange: 2deg;
 }
 
 .gv-info-text-intro{
-    @include fs-headline(7);
-    font-weight: 200;
+    @include fs-header(5);
     padding: 0 0 6px 0;
-    margin:  0 0 6px 6px;
+    margin:  -24px 60px 30px ;
     top: 0;
     color: $mainTextColor;
 }
 
 .gv-info-text-stat{
     top: 0;
-    padding: 0 0 6px 0;
-    margin:  0 0 6px 6px;
+    padding: 6px 0;
+    margin:  0 0 0 6px;
     color: $mainTextColor;
 
-    border-bottom: 1px dotted #FFF;
+    border-top: 1px dotted #FFF;
+
+    
 
         @include mq($from: mobile, $until: desktop) {
                      @include fs-headline(3);
@@ -201,12 +205,11 @@ $degRange: 2deg;
         }
 
     font-weight:900;
-    
-    
-
-    
-
 }
+
+.gv-info-text-stat:nth-child(1) {
+            border:none;
+        }
 
 .gv-info-source-text{
     margin: 0 0 0 6px;

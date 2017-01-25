@@ -1,18 +1,52 @@
 {{#slides}}
-		<div class='swiper-slide gv-mobile-slide'  id='mobileSlide_{{key}}'>
+		<div class='swiper-slide gv-mobile-slide'  id='mobileSlide_{{key}}' style ='background: linear-gradient( {{color2}} 0%, {{color1}} 75%);'>
 
-			
 
-			<div class='gv-mobile-image' id='slide-img-{{key}}' style ='background-image: linear-gradient( #fb8200 0%, #fb8200 100% ), url("<%= path %>/assets/opt/{{image}}.png") '></div>
+			{{^statSlideReq}}
+			<div class='gv-mobile-image{{#introTransReq}}-intro{{/introTransReq}}{{#outroTransReq}}-outro{{/outroTransReq}}' id='slide-img-{{key}}' style ='background-color:rgba(white,0.8); background-image: url("<%= path %>/assets/opt/{{image}}.png");'></div>
+			{{/statSlideReq}}
+
+
+
 			<div class="gv-mobile-headers deg-svg-{{deg}}">			
 				
 			</div>
 
-			<ul class="gv-mobile-info">
-				{{#sentenceArr}}
-					<li>{{sentence}}</li>
-				{{/sentenceArr}}
-			</ul>	
+			{{#introTextReq}}
+				<ul class="gv-mobile-intro">
+						{{#sentenceArr}}
+							<li>{{sentence}}</li>
+						{{/sentenceArr}}
+				</ul>
+
+			{{/introTextReq}}
+
+			{{^introTextReq}}
+
+				{{#outroTextReq}}
+					<ul class="gv-mobile-outro">
+						{{#sentenceArr}}
+							<li>{{sentence}}</li>
+						{{/sentenceArr}}
+					</ul>
+				{{/outroTextReq}}
+
+				{{^outroTextReq}}
+
+					<ul class="gv-mobile-info">
+						<li>
+							<h5>If temperatures rise more than {{deg}}C</h5>
+
+						</li>	
+						{{#sentenceArr}}
+
+							<li {{#statSlideReq}}class="stat{{#containsSource}} stat-source-text{{/containsSource}}"{{/statSlideReq}} >{{sentence}}</li>
+							
+						{{/sentenceArr}}
+					</ul>
+				{{/outroTextReq}}	
+
+			{{/introTextReq}}	
 									
 		</div>
 

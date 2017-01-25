@@ -1,14 +1,18 @@
-import { isMobile } from './utils';
+import { isMobile , debounce } from './utils';
 
+var checkForResizeFn = debounce(function() {
+	//initView();
+	console.log("RESIZED ")
+}, 2000);
 
 function initView(){
-	if(isMobile()){			
-			
+	if(isMobile()){		
 			loadApp('app_mobile.js');
 		} else {	
-			
 			loadApp('app.js');
 		}
+
+		window.addEventListener('resize', checkForResizeFn);
 }
 
 
@@ -18,5 +22,6 @@ function loadApp(file){
 	document.body.appendChild(el);
 }
 
-
 initView();
+
+

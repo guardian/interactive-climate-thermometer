@@ -2,8 +2,9 @@ import Mustache from 'mustache';
 import Swiper from 'swiper';
 import { } from './utils';
 import { cleanData, transTimeUnit } from './data';
-import { loadData, colorsArr, isMobile, isAndroidApp, splitString } from './utils';
+import { loadData, colorsArr, isMobile, isAndroidApp, splitString, scrollDraw } from './utils';
 
+//add mobile template
 import mobileSlides from './text/mobileSlides.html';
 
 var windowWidth = window.innerWidth || document.documentElement.clientWidth  || document.body.clientWidth;
@@ -63,13 +64,12 @@ function addMobileSlidesView(slidesData){
     var tpl = mobileSlides;
     var tplOp = Mustache.to_html(tpl, slidesData);
     var tgtEl = document.querySelector('.swiper-wrapper');
-
-
-    console.log(tplOp)
     
     tgtEl.innerHTML = tplOp;
 
     addSwiper();
+
+    scrollDraw('#temperatureLine');
 }
 
 function addSwiper(){
@@ -83,7 +83,7 @@ function addSwiper(){
             paginationClickable: true,
             spaceBetween: 30,
             centeredSlides: true,
-            autoplay: 5000,
+            autoplay: 6000,
             autoplayDisableOnInteraction: true
 
         }) 
@@ -97,5 +97,7 @@ function addSwiper(){
                 window.GuardianJSInterface.registerRelatedCardsTouch(false);
             }
         });
+
+
 }
 

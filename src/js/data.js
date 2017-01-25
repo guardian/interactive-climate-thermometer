@@ -36,8 +36,7 @@ export function cleanData(dataBase){
 				    		slideObj.timeThree = slideObj.timeFour - transTimeUnit;
 
 				    		slideObj.color1 = colorsArr[slideObj.slideRef];
-				    		slideObj.color2 = colorsArr[colorsArr.length-1];	    		 
-
+				    		
 				    		slideObj.sentenceArr = getSentenceArr(slideObj.sentences, slideObj.timeOne)
 
 				    		dataBase[k].imageRef == 'stats' ? slideObj.statSlideReq = true :  slideObj.statSlideReq = false; 
@@ -62,6 +61,11 @@ export function cleanData(dataBase){
 							
 						}
 				    }
+
+				for (var i=0; i < allEntriesArr.length; i++){
+					i == 0 ? allEntriesArr[i].color2 = colorsArr[1] : allEntriesArr[i].color2 = allEntriesArr[i-1].color1; 
+
+				}	    
 
 
 	return allEntriesArr;

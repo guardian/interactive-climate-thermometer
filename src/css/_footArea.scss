@@ -36,11 +36,12 @@
 
 
 
-    // @include mq($from: mobile, $until: desktop) {
-    //             height:80px;
-    //             width:30px;
+    @include mq($from: mobile, $until: desktop) {
+                display:none;
+                height:80px;
+                width:30px;
 
-    //         }
+            }
 
 
     // @include mq($from: desktop) {
